@@ -10,7 +10,7 @@ function createNewElement(task, finished) {
 
     if (finished){
     checkbox.className = "checkbox";
-    checkbox.innerHTML = "<i class='icons'>cansel</i>";
+    checkbox.innerHTML = "<i class='icons'>cancel</i>";
     }else {
     checkbox.className = "checkbox";
     checkbox.innerHTML = "<i class='icons'>✔done</i>";
@@ -80,7 +80,7 @@ function finishTask() {
     const listItem = this.parentNode;
     const checkbox = listItem.querySelector('button.checkbox');
     checkbox.className = "checkbox";
-    checkbox.innerHTML = "<i class='icons'>cansel</i>";
+    checkbox.innerHTML = "<i class='icons'>cancel</i>";
     finishedTasks.appendChild(listItem);
     bindTaskEvents(listItem, unfinishTask);
     save();
