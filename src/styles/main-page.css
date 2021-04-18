@@ -4,7 +4,7 @@ body {
     font-family: Times, Times New Roman, Georgia, serif;
     font-weight: bold;
     background-color: white;
-    border-bottom: 2px solid #fdff90;
+    border-bottom: 3px solid #fdff90;
 }
 
 header {
@@ -13,12 +13,12 @@ header {
     font-size: 50px;
     text-align: center;
     line-height: 90px;
-    color: #ec1aad;
+    color: #29333f;
     background: #ffffff;
     font-family: 'Niconne', cursive;
     font-weight: 700;
-    text-shadow: 5px 5px 0px#fdff90, 10px 10px 0px #9198e5;
-    border-bottom: 2px solid #fdff90;
+    text-shadow: 5px 5px 0px #e591da, 10px 10px 0px #ce68f7;
+    border-bottom: 3px solid #fdff90;
 }
 
 footer {
@@ -28,7 +28,7 @@ footer {
     height: 50px;
     background-color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
-    color: #ec1aad;
+    color: #29333f;
     text-align: center;
 }
 
@@ -51,12 +51,12 @@ button {
     justify-content: center;
     align-items: center;
     height: 650px;
-    background: linear-gradient(#e66465, #9198e5);
+    background: linear-gradient(#e591da, #29333f);
 }
 
 .card {
     margin-top: 20px;
-    background-color: #9198e5;
+    background-color: #29333f;
     height: 37rem;
     border-radius: 5px;
     display: flex;
