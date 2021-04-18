@@ -1,148 +1,102 @@
-* {
-    box-sizing: border-box;
-    background-color:  #cecccc;
-  }
-  
-  input[type=password], input[type=pochta], input[type=name]{
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-  }
-  
-  input[type=pochta]:focus, input[type=password]:focus {
-    background-color: rgb(197, 236, 220);
-    outline: rgb(204, 16, 2);
-  }
-  
-  button {
-    background-color:  #29333f;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: solid;
-    border-color: white;
-    cursor: pointer;
-    width: 45%;
-    opacity: 0.9;
-  }
-  .btn {
-    background-color:  #fbee6c;
-    color: #29333f;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: solid;
-    border-color: white;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-  }
-  button:hover {
-    opacity:1;
-  }
-  .btn:hover {
-    opacity:1;
-  }
-  /* Extra styles for the cancel button */
-  .cancelbtn {
-    padding: 14px 20px;
-    background-color: #f44336;
-  }
-  .signinbtn {
-    padding: 14px 20px;
-  }
-  /* Float cancel and signup buttons and add an equal width */
-  .cancelbtn {
-    float: left;
-    width: 50%;
-  }
-  .signupbtn {
-    float: right;
-    width: 50%;
-  }
-  .signinbtn {
-    float: right;
-    width: 50%;
-  }
-  /* Add padding to container elements */
-  .container {
-    padding: 16px;
-  }
-  
-  /* The Modal (background) */
-  .modal1 {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color:#fbee6c;
-    padding-top: 50px;
-  }
-  .modal2 {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: #fbee6c;
-    padding-top: 50px;
-  }
-  /* Modal Content/Box */
-  .modal1-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
-  .modal2-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
-  
-  /* Style the horizontal ruler */
-  hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 25px;
-  }
-  
-  /* The Close Button (x) */
-  .close {
-    position: absolute;
-    right: 35px;
-    top: 15px;
-    font-size: 40px;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Times, Times New Roman, Georgia, serif;
     font-weight: bold;
-    color: #f1f1f1;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #f44336;
+    background-color: white;
+    border-bottom: 2px solid #fdff90;
+}
+
+header {
+    height: 100px;
+    margin-bottom: 0px;
+    font-size: 50px;
+    text-align: center;
+    line-height: 90px;
+    color: #ec1aad;
+    background: #ffffff;
+    font-family: 'Niconne', cursive;
+    font-weight: 700;
+    text-shadow: 5px 5px 0px#fdff90, 10px 10px 0px #9198e5;
+    border-bottom: 2px solid #fdff90;
+}
+
+footer {
+    margin: auto;
+    position: relative;
+    padding-left: 600px;
+    height: 50px;
+    background-color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ec1aad;
+    text-align: center;
+}
+
+button {
+    background-color: #ffffff;
+    padding: 5px;
+    margin: 5px;
+    margin-right: auto;
+    border: none;
+    border-color: white;
+    border-radius: 50%;
     cursor: pointer;
-  }
-  
-  /* Clear floats */
-  .clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-  
-  /* Change styles for cancel button and signup button on extra small screens */
-  @media screen and (max-width: 300px) {
-    .cancelbtn, .signupbtn, .signinbtn {
-      width: 50%;
-    }
-  }
-  
+    float: right;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 300px 300px 300px 300px;
+    grid-gap: 50px;
+    justify-content: center;
+    align-items: center;
+    height: 650px;
+    background: linear-gradient(#e66465, #9198e5);
+}
+
+.card {
+    margin-top: 20px;
+    background-color: #9198e5;
+    height: 37rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.7);
+    color: white;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 4px #ffffff;
+}
+
+.card:focus {
+    outline: 2px dotted #55d7dc;
+}
+
+.card__name {
+    margin-top: 20px;
+    font-size: 20px;
+    font-family: 'Pacifico';
+}
+
+.card__image {
+    background-color: white;
+    height: 80px;
+    width: 80px;
+    border-radius: 25%;
+    border: none;
+    margin-top: 100px;
+    box-shadow: 0 10px 50px rgb(241, 79, 144);
+}
+
+.grid-container {
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+hr {
+    border: 2px solid #fdff90;
+    margin-bottom: 0px;
+}

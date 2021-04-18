@@ -1,81 +1,67 @@
-<!doctype html>
-<html>
-  <head>
+<!Doctype html>
+<html lang="en">
+
+<head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planner by Zbochenki</title>
     <link rel="stylesheet" href="./styles/main-page.css">
-  </head>
-  <body>
+</head>
+<header>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
+    </style>
+    Your Personal Planner
+    <button onclick="document.location = 'index.html'"><img src="https://img.icons8.com/nolan/64/menu.png" style="float: right"/> </button>
+    <button onclick="document.location = 'index.html'"><img src="https://img.icons8.com/nolan/64/home-page.png" style="float: right"/></button>
+</header>
 
-  <div class="container">
-      <main style="text-align:center">
-          <h1>Your personal web planner</h1>
-          <hr>
-      </main>
-  </div>
-<button onclick="document.getElementById('signup').style.display='inline-block'">Sign Up</button>
-<button onclick="document.getElementById('signin').style.display='inline-block'">Sign In</button>
-<button class = "btn" onclick="document.location = 'calendar.html'">CALENDAR</button>
-<button class = "btn" onclick="document.location = 'todolist.html'">TODOLIST</button>
- </body>
-</html>
-
-
-<div id="signup" class="modal1">
-
-  <form class="modal1-content" action="/app.js">
+<body>
     <div class="container">
-      <h1>Sign Up</h1>
-      <p>Please fill in this form to create an account.</p>
-      <hr>
-      <label for="nik"><b>Name</b></label>
-      <input type="name" placeholder="Enter your name" name="nik" required>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+        </style>
 
-      <label for="email"><b>Email</b></label>
-      <input type="pochta" placeholder="Enter email" name="email" required>
+        <div class="card" onclick="document.location = 'todolist.html'">
+            <img src="https://img.icons8.com/nolan/64/checklist.png" class="card__image">
+            <p class="card__name">TODOLIST</p>
+            <div class="grid-container">
+                Todolist will help you to easily manage your tasks
+            </div>
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter password" name="psw" required>
+        </div>
 
-      <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat password" name="psw-repeat" required>
+        <div class="card" onclick="document.location = 'calendar.html'">
+            <img src="https://img.icons8.com/nolan/64/tasks--v1.png" class="card__image">
+            <p class="card__name">CALENDAR</p>
+            <div class="grid-container">
+                Choose calendar to plan your week, month or even year
+            </div>
+        </div>
 
-      <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-      </label>
+        <div class="card">
+            <img src="https://img.icons8.com/nolan/64/mind-map.png" class="card__image">
+            <p class="card__name">LEARN ENGLISH</p>
+            <div class="grid-container">
+                *WILL BE SOON*
+                <p>Google Translate might be helpful, but it's better to know English yourself</p>
+            </div>
+        </div>
 
-      <div class="clearfix">
-        <button type="button" onclick="document.getElementById('signup').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signupbtn">Sign Up</button>
-      </div>
+        <div class="card">
+            <img src="https://img.icons8.com/nolan/64/squared-menu.png" class="card__image">
+            <p class="card__name">GAMES</p>
+            <div class="grid-container">
+                *WILL BE SOON*
+                <p>Take a break by playing our games and score some points to open new features</p>
+            </div>
+        </div>
 
-    </div>
-  </div>
-</form>
+        <script src="./index.js"></script>
+</body>
 
-  <div id="signin" class="modal2">
+<footer>
+    <div class="footer">©2021 ULUMANANA</div>
+</footer>
 
-  <form class="modal2-content" action="/app.js">
-    <div class="container">
-      <h1>Sign In</h1>
-      <hr>
-      <label for="nik"><b>Name</b></label>
-      <input type="name" placeholder="Enter your name" name="nik" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter password" name="psw" required>
-
-      <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-      </label>
-      <div class="clearfix">
-        <button type="button" onclick="document.getElementById('signin').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signinbtn">Sign In</button>
-      </div>
-    </div>
-
-  </form>
-</div>
-
-  </body>
 </html>
