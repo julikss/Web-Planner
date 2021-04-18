@@ -1,5 +1,7 @@
 body {
     background:#29333f;
+    background-repeat: no-repeat;
+    background-size: cover;
     color: rgb(255, 255, 255);
     font-family: sans-serif;
 }
@@ -137,3 +139,22 @@ ul li.editMode label {
 button.checkbox {
     float: left;
 }
+
+/* settings */
+
+#settings{
+    position: fixed;
+    right: 0px;
+    top: 0;
+    width: 150px;
+    background:#161c22; 
+    border: 2px solid #161c22;
+    text-align: center;
+    color: #fbec6c;
+}
+
+.changeBgr img {
+    height: 100px;
+    cursor: pointer;
+}
+

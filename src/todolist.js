@@ -144,3 +144,26 @@ for(let i=0; i<data.finishedTasks.length; i++){
     finishedTasks.appendChild(listItem);
     bindTaskEvents(listItem, unfinishTask);
 }
+
+//change background
+
+const bgrNone = document.querySelector('#bgrNone');
+const bgr1 = document.querySelector('#bgr1');
+const bgr2 = document.querySelector('#bgr2');
+const bgr3 = document.querySelector('#bgr3');
+
+bgrNone.addEventListener('click', () => {
+    document.body.style.backgroundImage = "url('img/todolist/bgr_none.jpg')";
+});
+
+bgr1.addEventListener('click', () => {
+    document.body.style.backgroundImage = "url('img/todolist/bgr1.jpg')";
+});
+
+bgr2.addEventListener('click', () => {
+    document.body.style.backgroundImage = "url('img/todolist/bgr2.jpg')";
+});
+
+bgr3.addEventListener('click', () => {
+    document.body.style.backgroundImage = "url('img/todolist/bgr3.jpg')";
+});
