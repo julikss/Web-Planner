@@ -4,40 +4,39 @@ html {
 
 .menu {
     position: fixed;
-    top: 0;
+    top: 0px;
     left: 0;
     width: 75px;
     height: 100%;
-    background: #29333f;
+    background: rgba(41, 51, 63, 0.2);
     font-size: 14px;
     font-family: sans-serif;
 }
 
 .menu__item {
+    top: 200px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 15px 0;
     text-decoration: none;
-    color: #666666;
+    color: #ffffff;
     transition: background 0.3s;
 }
 
-.menu__item > i {
+.menu__item>i {
     font-size: 2.2em;
 }
 
 .menu__item--active {
     color: #000000;
-    background: #dddddd;
-
+    background: #ffffff;
 }
 
 .menu__item:hover {
     color: #fbee6c;
-    background: #20252b;
-
+    background-color: rgba(41, 51, 63, 0.8);
 }
 
 .menu__item:after {
@@ -58,11 +57,9 @@ html {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s;
-
-
 }
 
-.menu__item:hover::after  {
+.menu__item:hover::after {
     opacity: 1;
     visibility: visible;
 }

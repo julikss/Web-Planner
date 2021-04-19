@@ -1,10 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Times, Times New Roman, Georgia, serif;
-    font-weight: bold;
-    background-color: white;
-    border-bottom: 3px solid #fdff90;
+    background-color: #29333f;
 }
 
 header {
@@ -14,21 +11,18 @@ header {
     text-align: center;
     line-height: 90px;
     color: #29333f;
-    background: #ffffff;
-    font-family: 'Niconne', cursive;
+    background: #c7c7c7;
+    font-family: 'Pacifico';
     font-weight: 700;
-    text-shadow: 5px 5px 0px #e591da, 10px 10px 0px #ce68f7;
-    border-bottom: 3px solid #fdff90;
+    text-shadow: 5px 5px 0px #e591da, 10px 10px 0px #fdff90;
+    border-bottom: 2px solid #29333f;
 }
 
 footer {
     margin: auto;
-    position: relative;
     padding-left: 600px;
-    height: 50px;
-    background-color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #29333f;
+    font-family: Arial, Helvetica, sans-serif, bold;
+    color: #ffffff;
     text-align: center;
 }
 
@@ -50,13 +44,13 @@ button {
     grid-gap: 50px;
     justify-content: center;
     align-items: center;
-    height: 650px;
-    background: linear-gradient(#e591da, #29333f);
+    height: 846px;
+    background: linear-gradient( #c7c7c7, #fdff90, #db98db);
 }
 
 .card {
     margin-top: 20px;
-    background-color: #29333f;
+    background-color: rgba(41, 51, 63, 0.9);
     height: 37rem;
     border-radius: 5px;
     display: flex;
@@ -66,6 +60,7 @@ button {
     color: white;
     cursor: pointer;
     box-shadow: inset 0 0 0 4px #ffffff;
+    border-radius: 20px;
 }
 
 .card:focus {
@@ -97,6 +92,6 @@ button {
 }
 
 hr {
-    border: 2px solid #fdff90;
+    border: 2px solid #ffffff;
     margin-bottom: 0px;
 }

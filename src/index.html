@@ -6,17 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planner by Zbochenki</title>
     <link rel="stylesheet" href="./styles/main-page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./styles/bar.css">
 </head>
 <header>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
     </style>
     Your Personal Planner
-    <button onclick="document.location = 'index.html'"><img src="https://img.icons8.com/nolan/64/menu.png" style="float: right"/> </button>
-    <button onclick="document.location = 'index.html'"><img src="https://img.icons8.com/nolan/64/home-page.png" style="float: right"/></button>
 </header>
 
 <body>
+
+    <nav class="menu">
+        <a href="./index.html" class="menu__item menu__item--active" data-tooltip="Home">
+            <i class="fa fa-home"></i>
+        </a>
+        <a href="./auth.html" class="menu__item" data-tooltip="Sign in/up">
+            <i class="fas fa-sign-in"></i>
+        </a>
+        <a href="./" class="menu__item" data-tooltip="Schedule">
+            <i class="fas fa-table"></i>
+        </a>
+        <a href="./" class="menu__item" data-tooltip="Your stars">
+            <i class="fa fa-star"></i>
+        </a>
+        <a href="./" class="menu__item" data-tooltip="Sign out">
+            <i class="fa fa-sign-out"></i>
+        </a>
+        <a href="https://github.com/julikss/Web-Planner" class="menu__item" data-tooltip="Our GitHub">
+            <i class="fa fa-code"></i>
+        </a>
+    </nav>
+
     <div class="container">
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
@@ -56,12 +79,9 @@
                 <p>Take a break by playing our games and score some points to open new features</p>
             </div>
         </div>
-
         <script src="./index.js"></script>
 </body>
 
-<footer>
-    <div class="footer">©2021 ULUMANANA</div>
-</footer>
+<footer class="footer">©2021 ULUMANANA</footer>
 
 </html>
