@@ -10,11 +10,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background:  rgb(20, 20, 37);
 }
 
 #canvas1 {
     width: 900px;
     height: 600px;
     border: 2px solid rgb(20, 20, 37);
-    background: rgb(81, 187, 187);
+    background: rgb(104, 145, 199);
 }

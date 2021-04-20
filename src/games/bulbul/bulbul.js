@@ -6,7 +6,9 @@ canvas.height = 600;
 
 let score = 0;
 let gameFrame = 0;
+ctx.font = '30px arial';
 
+//mouse
 let canvasPosition = canvas.getBoundingClientRect();
 const mouse = {
     x: canvas.width / 2,
@@ -17,22 +19,29 @@ canvas.addEventListener('mousedown', function(event){
     mouse.x = event.x - canvasPosition.left;
     mouse.y = event.y - canvasPosition.top;
 });
+canvas.addEventListener('mouseup', function(){
+    mouse.click = false;
+});
 
 //player
 class Player {
     constructor(){
         this.x = canvas.width;
         this.y = canvas.height/2;
-        this.radius = 60;
+        this.radius = 60;    
+        // this.angle = 0;
+        // this.frameX = 0;
+        // this.frameY = 0;
+        // this.frame = 0;
     }
     update(){
         const dx = this.x - mouse.x;
         const dy = this.y - mouse.y;
         if (mouse.x != this.x){
-            this.x -= dx / 30;
+            this.x -= dx / 15;
         }
         if (mouse.y != this.y){
-            this.y -= dy / 30;
+            this.y -= dy / 15;
         }
     }
     draw(){
@@ -43,7 +52,7 @@ class Player {
             ctx.lineTo(mouse.x, mouse.y);
             ctx.stroke();
         }
-        ctx.fillStyle = 'blue';
+        ctx.fillStyle = 'rgba(219, 204, 68)';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.fill();
@@ -53,11 +62,62 @@ class Player {
 }
 const player = new Player();
 
+//small bulbul
+const bulArray = [];
+class Bul {
+    constructor (){
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + 100;
+        this.radius = 50;
+        this.speed = Math.random() * 5 + 1;  
+        this.distance;   
+        this.count = false;   
+    }
+    update(){
+        this.y -= this.speed;
+        const dx = this.x - player.x;
+        const dy = this.y - player.y;
+        this.distance = Math.sqrt(dx * dx + dy * dy);
+    }
+    draw(){
+        ctx.fillStyle = '#161c22';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.closePath();
+        ctx.stroke();
+    }
+}
+function handlyBul(){
+    if (gameFrame % 50 == 0){
+        bulArray.push(new Bul());
+    }
+    for (let i = 0; i < bulArray.length; i++){
+        if (bulArray[i].y < 0 - bulArray[i].radius * 2) {
+            bulArray.splice(i, 1);
+          }
+          bulArray[i].update();
+          bulArray[i].draw();
+        if (bulArray[i].distance < bulArray[i].radius + player.radius){
+            if (!bulArray[i].count){
+                score++;
+                bulArray[i].count = true;
+                bulArray.splice(i, 1);
+            }
+        }
+    }
+}
+
+
 //animation
 function animation(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    handlyBul();
     player.update();
     player.draw();
+    ctx.fillStyle = 'black';
+    ctx.fillText('score:' + score, 20, 40);
+    gameFrame++;
     requestAnimationFrame(animation);
 }
 animation();
