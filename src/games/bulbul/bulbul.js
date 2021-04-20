@@ -1,10 +1,12 @@
 //canvas
 const canvas = document.querySelector('#canvas1');
 const ctx = canvas.getContext('2d');
+const repeat = document.querySelector('#repeat');
 canvas.width = 900;
 canvas.height = 600;
 
 let score = 0;
+let skip = 0;
 let gameFrame = 0;
 ctx.font = '30px arial';
 
@@ -70,7 +72,7 @@ class Bul {
         this.y = canvas.height + 100;
         this.radius = 50;
         this.speed = Math.random() * 5 + 1;  
-        this.distance;   
+        this.distance = 0;   
         this.count = false;   
     }
     update(){
@@ -88,14 +90,16 @@ class Bul {
         ctx.stroke();
     }
 }
+
 function handlyBul(){
-    if (gameFrame % 50 == 0){
+    if (gameFrame % 40 == 0){
         bulArray.push(new Bul());
     }
     for (let i = 0; i < bulArray.length; i++){
-        if (bulArray[i].y < 0 - bulArray[i].radius * 2) {
+        if (bulArray[i].y < 0){
+            skip++;
             bulArray.splice(i, 1);
-          }
+        }
           bulArray[i].update();
           bulArray[i].draw();
         if (bulArray[i].distance < bulArray[i].radius + player.radius){
@@ -108,16 +112,29 @@ function handlyBul(){
     }
 }
 
-
 //animation
 function animation(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    repeat.style.visibility='hidden';
     handlyBul();
     player.update();
     player.draw();
     ctx.fillStyle = 'black';
+    ctx.fillText('skipped:' + skip, 20, 80);
     ctx.fillText('score:' + score, 20, 40);
+    if (skip >= 3){
+        skip = 0;
+        score = 0;
+        bulArray.count = true;
+        for (let i = 0; i < bulArray.length; i++){
+            bulArray.splice(i);
+        }
+        repeat.style.visibility='visible';
+        return;
+    }
     gameFrame++;
     requestAnimationFrame(animation);
 }
 animation();
+repeat.addEventListener('click', animation);
+

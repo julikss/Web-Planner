@@ -19,3 +19,20 @@ body {
     border: 2px solid rgb(20, 20, 37);
     background: rgb(104, 145, 199);
 }
+
+#gameOver {
+    margin: 10px;
+    color: white;
+}
+
+button {
+    background: none;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    font-family: sans-serif;
+    cursor: pointer;    
+}
+
+button:hover {
+    color:#fbee6c;
+}
