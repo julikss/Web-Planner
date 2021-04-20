@@ -8,6 +8,10 @@ canvas.height = 600;
 let score = 0;
 let skip = 0;
 let gameFrame = 0;
+let total = 0;
+let allTotal = localStorage.getItem('allTotal');
+allTotal = JSON.parse(allTotal);
+document.getElementById('allTotal').value = allTotal;
 ctx.font = '30px arial';
 
 //mouse
@@ -120,9 +124,15 @@ function animation(){
     player.update();
     player.draw();
     ctx.fillStyle = 'black';
+    ctx.fillText('total:' + total, 20, 120);
     ctx.fillText('skipped:' + skip, 20, 80);
     ctx.fillText('score:' + score, 20, 40);
     if (skip >= 3){
+        total += score;
+        allTotal += score;
+        // console.log(allTotal);
+        localStorage.setItem('allTotal', JSON.stringify(allTotal));
+        document.getElementById('allTotal').value = allTotal;
         skip = 0;
         score = 0;
         bulArray.count = true;

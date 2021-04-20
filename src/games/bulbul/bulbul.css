@@ -20,6 +20,29 @@ body {
     background: rgb(104, 145, 199);
 }
 
+#total {
+    position: fixed;
+    right: 40px;
+    top: 20px;
+    color: #fbee6c;
+    text-align: center;
+}
+
+input[type="text"] {
+    text-align: center;
+    margin: 1px 0;
+    font-size: 40px;
+    line-height: 18px;
+    height: 100px;
+    width: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 6px;
+    font-family: sans-serif;
+    color: rgb(0, 0, 0);
+}
+
 #gameOver {
     margin: 10px;
     color: white;
