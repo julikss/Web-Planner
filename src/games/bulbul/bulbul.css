@@ -44,16 +44,23 @@ input[type="text"] {
 }
 
 #gameOver {
-    margin: 10px;
+    position: absolute;
+    margin: 20px;
+    height: 70px;
+    width: 200px;
+    background:rgb(0, 0, 0, 0.8);
     color: white;
+    text-align: center;
+    cursor: pointer;  
 }
 
 button {
     background: none;
+    border:none;
     color: rgb(255, 255, 255);
     font-size: 30px;
-    font-family: sans-serif;
-    cursor: pointer;    
+    font-family: sans-serif;  
+    cursor: pointer;  
 }
 
 button:hover {

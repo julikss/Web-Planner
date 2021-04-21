@@ -1,7 +1,7 @@
 //canvas
 const canvas = document.querySelector('#canvas1');
 const ctx = canvas.getContext('2d');
-const repeat = document.querySelector('#repeat');
+const repeat = document.querySelector('#gameOver');
 canvas.width = 900;
 canvas.height = 600;
 
@@ -9,6 +9,7 @@ let score = 0;
 let skip = 0;
 let gameFrame = 0;
 let total = 0;
+const lives = 3;
 let allTotal = localStorage.getItem('allTotal');
 allTotal = JSON.parse(allTotal);
 document.getElementById('allTotal').value = allTotal;
@@ -120,21 +121,16 @@ function handlyBul(){
     }
 }
 
-//animation
-function animation(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    repeat.style.visibility='hidden';
-    handlyBul();
-    player.update();
-    player.draw();
+function writeInCtx (){
     ctx.fillStyle = 'black';
     ctx.fillText('total:' + total, 20, 120);
-    ctx.fillText('skipped:' + skip, 20, 80);
+    ctx.fillText(`lives: ${lives - skip}♥ ` , 20, 80);
     ctx.fillText('score:' + score, 20, 40);
-    if (skip >= 3){
+}
+
+function gameOver (){
         total += score;
         allTotal += score;
-        // console.log(allTotal);
         localStorage.setItem('allTotal', JSON.stringify(allTotal));
         document.getElementById('allTotal').value = allTotal;
         skip = 0;
@@ -144,6 +140,18 @@ function animation(){
             bulArray.splice(i);
         }
         repeat.style.visibility='visible';
+}
+
+//animation
+function animation(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    repeat.style.visibility='hidden';
+    handlyBul();
+    player.update();
+    player.draw();
+    writeInCtx();
+    if (skip == lives){
+        gameOver();
         return;
     }
     gameFrame++;
