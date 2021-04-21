@@ -12,6 +12,8 @@ let total = 0;
 let allTotal = localStorage.getItem('allTotal');
 allTotal = JSON.parse(allTotal);
 document.getElementById('allTotal').value = allTotal;
+const bulMusic = document.createElement('audio');
+bulMusic.src = 'soundBul.mp3';
 ctx.font = '30px arial';
 
 //mouse
@@ -78,6 +80,7 @@ class Bul {
         this.speed = Math.random() * 5 + 1;  
         this.distance = 0;   
         this.count = false;   
+        this.sound = 'sound';
     }
     update(){
         this.y -= this.speed;
@@ -96,7 +99,7 @@ class Bul {
 }
 
 function handlyBul(){
-    if (gameFrame % 40 == 0){
+    if (gameFrame % 50 == 0){
         bulArray.push(new Bul());
     }
     for (let i = 0; i < bulArray.length; i++){
@@ -108,6 +111,7 @@ function handlyBul(){
           bulArray[i].draw();
         if (bulArray[i].distance < bulArray[i].radius + player.radius){
             if (!bulArray[i].count){
+                bulMusic.play();
                 score++;
                 bulArray[i].count = true;
                 bulArray.splice(i, 1);
