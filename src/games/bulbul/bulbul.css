@@ -10,14 +10,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background:  rgb(20, 20, 37);
+    background: no-repeat url('./img/backgroundCanvas.jpg');
+    /* background:  linear-gradient(rgb(20, 20, 37), rgb(36, 36, 66), rgb(53, 53, 80)); */
 }
 
 #canvas1 {
     width: 900px;
     height: 600px;
-    border: 2px solid rgb(20, 20, 37);
-    background: rgb(104, 145, 199);
+    /* border: 1px solid rgb(20, 20, 37); */
+    background:rgba(0, 0, 0, 0.3);
+    /* background: rgb(104, 145, 199); */
+    /* background: no-repeat url('backgroundCanvas.jpg'); */
 }
 
 #total {
@@ -35,7 +38,7 @@ input[type="text"] {
     line-height: 18px;
     height: 100px;
     width: 100px;
-    padding: 10px;
+    padding: 3px;
     border: 1px solid #ddd;
     background: #fff;
     border-radius: 6px;

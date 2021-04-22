@@ -13,9 +13,13 @@ const lives = 3;
 let allTotal = localStorage.getItem('allTotal');
 allTotal = JSON.parse(allTotal);
 document.getElementById('allTotal').value = allTotal;
-const bulMusic = document.createElement('audio');
-bulMusic.src = 'soundBul.mp3';
 ctx.font = '30px arial';
+
+//sound
+const bulMusic = document.createElement('audio');
+bulMusic.src = './sound/soundBul.mp3';
+const gameOverMusic = document.createElement('audio');
+gameOverMusic.src = './sound/gameover.mp3';
 
 //mouse
 let canvasPosition = canvas.getBoundingClientRect();
@@ -33,6 +37,8 @@ canvas.addEventListener('mouseup', function(){
 });
 
 //player
+const imgPlayer = new Image();
+imgPlayer.src = './img/player.png';
 class Player {
     constructor(){
         this.x = canvas.width;
@@ -67,12 +73,15 @@ class Player {
         ctx.fill();
         ctx.closePath();
         ctx.fillRect(this.x, this.y, this.radius, 0);
+        ctx.drawImage(imgPlayer, this.x - 80, this.y - 80, 150, 150);
     }
 }
 const player = new Player();
 
 //small bulbul
 const bulArray = [];
+const imgBul = new Image();
+imgBul.src = './img/bul.png';
 class Bul {
     constructor (){
         this.x = Math.random() * canvas.width;
@@ -96,6 +105,7 @@ class Bul {
         ctx.fill();
         ctx.closePath();
         ctx.stroke();
+        ctx.drawImage(imgBul, this.x - 50, this.y - 50, 100, 100);
     }
 }
 
@@ -140,6 +150,7 @@ function gameOver (){
             bulArray.splice(i);
         }
         repeat.style.visibility='visible';
+        gameOverMusic.play();
 }
 
 //animation
