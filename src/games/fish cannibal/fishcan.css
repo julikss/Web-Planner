@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #29333f;
+}
+
+canvas {
+    background: url("./img/background.jpg");
+    width: 900px;
+    height: 600px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 2%;
+}
