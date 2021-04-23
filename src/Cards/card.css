@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Squada+One&family=Staatliches&display=swap');
+
+body{
+    font-family: 'Squada One', cursive;
+    font-size: 1rem;
+    background: #29333f;
+  }
+
+  header{
+      margin-top: 10%;
+      text-align: center;
+      color: #fbee6c;
+      font-size: 60px;
+      
+  }
+
+  button {
+    display: inline-block;
+	height: 50px;
+    line-height: 50px;
+    position: relative;
+    background: #29333f;
+    border: 5px solid #fbee6c;
+    padding: 0 1rem;
+    left: 40%;
+    transform: translate(-50%, 0);
+    margin: 30px;
+    margin-top: 10%;
+    cursor:pointer;
+    height:60px;
+    width:160px;
+    font-family: 'Squada One', cursive;
+    font-size: 27px;
+    color: #fbee6c ;
+}
+
+button:hover{
+    transition: 0.3s;
+    background: #fbee6c;
+    color: #191f26;
+}
