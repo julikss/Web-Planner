@@ -49,7 +49,7 @@ let createBubble = function() {
         this.yOff = Math.random() * canvas.height;
         this.distanceBetweenWaves = 50 + Math.random() * 40;
         this.count = canvas.height + this.yOff;
-    }
+    };
     this.render = function() {
         if (this.rotationDirection === 'forward') {
             if (this.rotation < this.maxRotation) {
@@ -79,8 +79,8 @@ let createBubble = function() {
 
 
         ctx.restore();
-    }
-}
+    };
+};
 
 for (var i = 0; i < bubbleCount; i++) {
     var tempBubble = new createBubble();
