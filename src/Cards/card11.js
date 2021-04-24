@@ -6,23 +6,23 @@ let contentArray = localStorage.getItem('items') ? JSON.parse(localStorage.getIt
 
 contentArray.forEach(divMaker);
 
-function divMaker(text){
-  var div = document.createElement("div");
-  var h2_question = document.createElement('h2');
-  var h2_answer = document.createElement('h2');
+function divMaker(text) {
+  const div = document.createElement("div");
+  const h2_question = document.createElement('h2');
+  const h2_answer = document.createElement('h2');
 
   div.className = 'flashcard';
 
-  h2_question.setAttribute("style", "padding: 15px; margin-top:30px");
+  h2_question.setAttribute("style", "padding: 15px; text-align:center; font-size:26px; margin-top:30px");
   h2_question.innerHTML = text.my_question;
 
-  h2_answer.setAttribute("style", "text-align:center; display:none; color: #c7c7c7");
+  h2_answer.setAttribute("style", "text-align:center; font-size:26px; display:none; color: #c7c7c7");
   h2_answer.innerHTML = text.my_answer;
 
   div.appendChild(h2_question);
   div.appendChild(h2_answer);
 
-  div.addEventListener("click", function(){
+  div.addEventListener("click", () => {
     if(h2_answer.style.display == "none")
       h2_answer.style.display = "block";
     else
@@ -32,7 +32,7 @@ function divMaker(text){
   flashcards.appendChild(div);
 }
 
-function addFlashcard(){
+const addFlashcard = () => {
   var flashcard_info = {
     'my_question' : question.value,
     'my_answer'  : answer.value
@@ -45,21 +45,21 @@ function addFlashcard(){
   answer.value = '';
 }
 
-function delFlashcards(){
+const delFlashcards = () => {
   localStorage.clear();
   flashcards.innerHTML = '';
   contentArray = [];
 }
 
-function showCreateCardBox(){
+const showCreateCardBox = () => {
   createCard.style.display = "block";
 }
 
-function hideCreateCardBox(){
+const hideCreateCardBox = () => {
   createCard.style.display = "none";
 }
 
 document.querySelector('.dark-mode-switch').onclick = () => {
-    document.querySelector('body').classList.toggle('pastel-mode')
-    document.querySelector('body').classList.toggle('light')
+    document.querySelector('body').classList.toggle('pastel-mode');  
 }
+

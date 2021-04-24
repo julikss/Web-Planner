@@ -7,11 +7,12 @@
   <title>Flashcards</title>
 </head>
 <body>
+  <div class="transition is-active"></div>
 
   <header>
     <div class="container">
       <div class="nav">
-        <h1>Flashcards</h1>
+        <h1 style="text-align: center;">Flashcards</h1>
         <div>
           <button onclick="showCreateCardBox()">Add</button>
           <button onclick="delFlashcards()">Delete</button>
@@ -29,7 +30,8 @@
       <br>
       <textarea id="answer"></textarea>
       <div>
-        <button onclick="addFlashcard()">Save</button> <button onclick="hideCreateCardBox()">Close</button>
+        <button onclick="addFlashcard()">Save</button> 
+        <button onclick="hideCreateCardBox()">Close</button>
       </div>
     </div>
     <div class="flashcards"></div>
@@ -47,5 +49,6 @@
 
 
   <script src="card11.js"></script>
+  
 </body>
 </html>
