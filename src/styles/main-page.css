@@ -37,7 +37,11 @@ button {
     float: center;
     font-family: Arial, Helvetica, sans-serif, bold;
     color: #000000;
-    box-shadow: 0 10px 50px rgb(241, 79, 144);
+    box-shadow: none;
+}
+
+button:hover {
+  box-shadow: 0 10px 50px rgb(241, 79, 144);
 }
 
 .container {
