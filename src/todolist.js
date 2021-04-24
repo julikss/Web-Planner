@@ -15,7 +15,7 @@ function createNewElement(task, finished) {
     checkbox.className = "checkbox";
     checkbox.innerHTML = "<i class='icons'>✔done</i>";
     }
-    
+
     const label = document.createElement('label');
     label.innerText = task;
     const input = document.createElement('input');
