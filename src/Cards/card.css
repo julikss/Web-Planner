@@ -11,12 +11,21 @@ body{
       text-align: center;
       color: #fbee6c;
       font-size: 60px;
-      
+      animation:fadeIn 1s;
   }
+
+  @keyframes fadeIn{
+    0%{opacity:0;}
+    10%{opacity:0;}
+    50%{opacity:0;}
+    100%{opacity:1;}
+    }
+
+
 
   button {
     display: inline-block;
-	height: 50px;
+	  height: 50px;
     line-height: 50px;
     position: relative;
     background: #29333f;
@@ -32,7 +41,15 @@ body{
     font-family: 'Squada One', cursive;
     font-size: 27px;
     color: #fbee6c ;
+    animation:fadeInB 2s;
 }
+
+@keyframes fadeInB{
+    0%{opacity:0;}
+    10%{opacity:0;}
+    50%{opacity:0;}
+    100%{opacity:1;}
+    }
 
 button:hover{
     transition: 0.3s;
