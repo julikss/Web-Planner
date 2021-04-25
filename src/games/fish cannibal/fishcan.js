@@ -82,8 +82,8 @@ let createBubble = function() {
     };
 };
 
-for (var i = 0; i < bubbleCount; i++) {
-    var tempBubble = new createBubble();
+for (let i = 0; i < bubbleCount; i++) {
+    let tempBubble = new createBubble();
 
     bubbles.push(tempBubble);
 }
