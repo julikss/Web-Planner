@@ -27,7 +27,7 @@ const mouse = {
     x: canvas.width / 2,
     y: canvas.height / 2,
 };
-canvas.addEventListener('mousedown', function(event){
+canvas.addEventListener('mousemove', function(event){
     mouse.x = event.x - canvasPosition.left;
     mouse.y = event.y - canvasPosition.top;
 });
@@ -60,7 +60,7 @@ class Player {
         }
     }
     draw(){
-        if(mouse.click) {
+        if(mouse.move) {
             ctx.lineWidth = 0.1;
             ctx.beginPath();
             ctx.moveTo(this.x, this.y);
@@ -87,7 +87,7 @@ class Bul {
         this.x = Math.random() * canvas.width;
         this.y = canvas.height + 100;
         this.radius = 50;
-        this.speed = Math.random() * 5 + 1;  
+        this.speed = Math.random() * 7 + 1;  
         this.distance = 0;   
         this.count = false;   
         this.sound = 'sound';
@@ -110,7 +110,7 @@ class Bul {
 }
 
 function handlyBul(){
-    if (gameFrame % 50 == 0){
+    if (gameFrame % 30 == 0){
         bulArray.push(new Bul());
     }
     for (let i = 0; i < bulArray.length; i++){
@@ -140,7 +140,7 @@ function writeInCtx (){
 
 function gameOver (){
         total += score;
-        allTotal += score;
+        allTotal += Math.round(score/10);
         localStorage.setItem('allTotal', JSON.stringify(allTotal));
         document.getElementById('allTotal').value = allTotal;
         skip = 0;
