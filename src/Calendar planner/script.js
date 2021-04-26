@@ -4,8 +4,11 @@ let events=localStorage.getItem('events') ? JSON.parse(localStorage.getItem('eve
 
 const calendar=document.getElementById('calendar');
 const weekdays=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+const months=['January','February','March','April','May','June','July',
+'August','September','October','November','December'];
 
 const display=()=>{
+
 const currDate=new Date();
 const day=currDate.getDate();
 const month=currDate.getMonth();
@@ -17,6 +20,8 @@ const dateString=firstDay.toLocaleDateString('en-us');
 const firstWeekday=weekdays[firstDay.getDay()-1];
 const paddingdays=weekdays.indexOf(firstWeekday);
 const displayedDays=paddingdays+daysAmount;
+
+document.getElementById('monthButton').innerText = `${months[month]} ${year}`;
 
 for(let i=1; i<=displayedDays; i++){
 const daySquare=document.createElement('div');
@@ -32,6 +37,20 @@ calendar.appendChild(daySquare);
 }
 
 }
+
+function pressButton(){
+document.getElementById('nextButton').addEventListener('click', ()=>{
+    currentMonth++;
+    display();
+});
+
+document.getElementById('backButton').addEventListener('click', ()=>{
+    currentMonth--;
+    display();
+});
+}
+
+pressButton()
 display();
 
 
