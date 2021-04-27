@@ -78,7 +78,7 @@ button {
   background-color: #FFFCFF !important;
   box-shadow: none !important;
 }
-#newEventModal, #deleteEventModal {
+#newEvent, #deleteEvent {
   display: none;
   z-index: 20;
   padding: 25px;
@@ -91,7 +91,7 @@ button {
   position: absolute;
   font-family: sans-serif;
 }
-#eventTitleInput {
+#eventInput {
   padding: 10px;
   width: 100%;
   box-sizing: border-box;
@@ -101,7 +101,7 @@ button {
   border: none;
   box-shadow: 0px 0px 3px gray;
 }
-#eventTitleInput.error {
+#eventInput.error {
   border: 2px solid rgb(247, 2, 2);
 }
 #cancelButton, #deleteButton {
