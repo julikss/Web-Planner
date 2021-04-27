@@ -10,6 +10,11 @@ const months=['January','February','March','April','May','June','July',
 const display=()=>{
 
 const currDate=new Date();
+
+if(currentMonth !== 0) {
+  currDate.setMonth(new Date().getMonth()+currentMonth);
+}
+
 const day=currDate.getDate();
 const month=currDate.getMonth();
 const year=currDate.getFullYear();
@@ -22,6 +27,8 @@ const paddingdays=weekdays.indexOf(firstWeekday);
 const displayedDays=paddingdays+daysAmount;
 
 document.getElementById('monthButton').innerText = `${months[month]} ${year}`;
+
+calendar.innerHTML = ''; 
 
 for(let i=1; i<=displayedDays; i++){
 const daySquare=document.createElement('div');
