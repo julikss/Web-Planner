@@ -7,7 +7,7 @@ const weekdays=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','S
 const months=['January','February','March','April','May','June','July',
 'August','September','October','November','December'];
 
-const display=()=>{
+const display = () => {
 
 const currDate=new Date();
 
@@ -45,7 +45,7 @@ calendar.appendChild(daySquare);
 
 }
 
-function pressButton(){
+const pressButton = () => {
 document.getElementById('nextButton').addEventListener('click', ()=>{
     currentMonth++;
     display();
@@ -57,7 +57,16 @@ document.getElementById('backButton').addEventListener('click', ()=>{
 });
 }
 
+const addEvent = (date) => {
+    click = date;
+    const currentEvent = events.find(x => x.date === click);
 
+    if(currentEvent) {
+
+    } else {
+        
+    }
+}
 
 pressButton()
 display();

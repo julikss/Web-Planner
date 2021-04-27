@@ -107,7 +107,7 @@ button {
 #cancelButton, #deleteButton {
   background-color: #d36c6c;
 }
-#saveButton, #closeButton {
+#addButton, #closeButton {
   background-color: #92a1d1;
 }
 #eventText {
