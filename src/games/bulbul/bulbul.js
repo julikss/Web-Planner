@@ -2,14 +2,14 @@
 const canvas = document.querySelector('#canvas1');
 const ctx = canvas.getContext('2d');
 const repeat = document.querySelector('#gameOver');
-canvas.width = 900;
-canvas.height = 600;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 let score = 0;
 let skip = 0;
 let gameFrame = 0;
-let total = 0;
-const lives = 3;
+// let total = 0;
+let lives = 5;
 let allTotal = localStorage.getItem('allTotal');
 allTotal = JSON.parse(allTotal);
 document.getElementById('allTotal').value = allTotal;
@@ -44,10 +44,6 @@ class Player {
         this.x = canvas.width;
         this.y = canvas.height/2;
         this.radius = 60;    
-        // this.angle = 0;
-        // this.frameX = 0;
-        // this.frameY = 0;
-        // this.frame = 0;
     }
     update(){
         const dx = this.x - mouse.x;
@@ -87,7 +83,7 @@ class Bul {
         this.x = Math.random() * canvas.width;
         this.y = canvas.height + 100;
         this.radius = 50;
-        this.speed = Math.random() * 7 + 1;  
+        this.speed = Math.random() * 6 + 1;  
         this.distance = 0;   
         this.count = false;   
         this.sound = 'sound';
@@ -110,7 +106,7 @@ class Bul {
 }
 
 function handlyBul(){
-    if (gameFrame % 30 == 0){
+    if (gameFrame % 50 == 0){
         bulArray.push(new Bul());
     }
     for (let i = 0; i < bulArray.length; i++){
@@ -131,20 +127,60 @@ function handlyBul(){
     }
 }
 
+//danger fish
+const dangerFishImage = new Image();
+dangerFishImage.src = './img/dangerFish.png';
+class DangerFish {
+    constructor(){
+        this.x = 0;
+        this.y = Math.random() * canvas.height;
+        this.radius = 50;
+        this.speed = Math.random() * 2 + 2;
+    }
+    draw(){
+        ctx.fillStyle = 'black';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.drawImage(dangerFishImage, this.x - 130, this.y - 130, 200, 200);
+    }
+    update(){
+        this.x += this.speed;
+        if (this.x > canvas.width - this.radius * 2){
+            this.x = 0;
+            this.y = Math.random() * canvas.height;
+            this.speed = Math.random() * 2 + 3;
+        }
+        const dx = this.x - player.x;
+        const dy = this.y - player.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < this.radius + player.radius){
+            lives--;
+        }
+    }
+}
+const dangerFish1 = new DangerFish();
+function handlyDangerfish(){
+     dangerFish1.draw();
+    dangerFish1.update();
+}
+
+
+//inscription on canvas
 function writeInCtx (){
-    ctx.fillStyle = 'black';
-    ctx.fillText('total:' + total, 20, 120);
+    ctx.fillStyle = 'white';
+    // ctx.fillText('total:' + total, 20, 120);
     ctx.fillText(`lives: ${lives - skip}♥ ` , 20, 80);
     ctx.fillText('score:' + score, 20, 40);
 }
 
 function gameOver (){
-        total += score;
+        // total += score;
         allTotal += Math.round(score/10);
         localStorage.setItem('allTotal', JSON.stringify(allTotal));
         document.getElementById('allTotal').value = allTotal;
-        skip = 0;
-        score = 0;
+        // skip = 0;
+        // score = 0;
         bulArray.count = true;
         for (let i = 0; i < bulArray.length; i++){
             bulArray.splice(i);
@@ -158,6 +194,7 @@ function animation(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     repeat.style.visibility='hidden';
     handlyBul();
+    if (score >= 15) handlyDangerfish();
     player.update();
     player.draw();
     writeInCtx();
@@ -169,5 +206,7 @@ function animation(){
     requestAnimationFrame(animation);
 }
 animation();
-repeat.addEventListener('click', animation);
-
+// repeat.addEventListener('click', animation);
+repeat.addEventListener('click', function(){
+    location.href = location.href;
+});

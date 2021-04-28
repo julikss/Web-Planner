@@ -11,22 +11,22 @@ body {
     justify-content: center;
     align-items: center;
     background: no-repeat url('./img/backgroundCanvas.jpg');
-    /* background:  linear-gradient(rgb(20, 20, 37), rgb(36, 36, 66), rgb(53, 53, 80)); */
 }
 
 #canvas1 {
-    width: 900px;
-    height: 600px;
-    /* border: 1px solid rgb(20, 20, 37); */
+    /* width: 900px;
+    height: 600px; */
+    width: 100%;
+    height: 100%;
     background:rgba(0, 0, 0, 0.3);
-    /* background: rgb(104, 145, 199); */
-    /* background: no-repeat url('backgroundCanvas.jpg'); */
 }
 
-#total {
+#total { 
     position: fixed;
-    right: 40px;
-    top: 20px;
+    width: 100px;
+    right: 0px;
+    top: 0px;
+    background:rgb(0, 0, 0, 0.3);
     color: #fbee6c;
     text-align: center;
 }

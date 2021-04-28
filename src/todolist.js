@@ -3,6 +3,14 @@ const inputTask = document.getElementById('new-task');
 const unfinishedTasks = document.getElementById('unfinished-tasks');
 const finishedTasks = document.getElementById('finished-tasks');
 
+//change background
+const backgrs = document.querySelectorAll('.background');
+for (const backgr of backgrs) {
+    const id = backgr.id;
+    backgr.addEventListener('click', () => {
+        document.body.style.backgroundImage = `url('img/todolist/${id}.jpg')`;
+    });
+} 
 
 function createNewElement(task, finished) {
     const listItem = document.createElement('li');
@@ -145,13 +153,4 @@ for(let i=0; i<data.finishedTasks.length; i++){
     bindTaskEvents(listItem, unfinishTask);
 }
 
-//change background
 
-const backgrs = document.querySelectorAll('.background');
-
-for (const backgr of backgrs) {
-    const id = backgr.id;
-    backgr.addEventListener('click', () => {
-        document.body.style.backgroundImage = `url('img/todolist/${id}.jpg')`;
-    });
-}
