@@ -14,12 +14,7 @@ const quotes = ["Главное в жизни - это уметь думать. 
 window.onload = pageLoad
 
 function pageLoad() {
-  const startBtn = document.getElementById("btn");
-
-  //startBtn.onclick = createNotification();
-  btn.addEventListener("click", () => {
-      createNotification();
-  });
+  const startBtn = document.getElementById("btn").addEventListener('click', createNotification);
 }
 
 function createNotification() {
@@ -34,4 +29,6 @@ function createNotification() {
   setTimeout(() => {
       notif.remove();
    }, 6000);
+
+   btn.removeEventListener('click',createNotification);
 }
