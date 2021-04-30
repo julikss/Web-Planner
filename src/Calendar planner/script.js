@@ -6,6 +6,8 @@ const calendar=document.getElementById('calendar');
 const weekdays=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 const months=['January','February','March','April','May','June','July',
 'August','September','October','November','December'];
+const newEvent=document.getElementById('newEvent');
+const modalBackDrop=document.getElementById('modalBackDrop');
 
 const display = () => {
 
@@ -36,7 +38,7 @@ daySquare.classList.add('day');
 
 if (i>paddingdays) {
 daySquare.innerText=i-paddingdays;
-daySquare.addEventListener('click', () => console.log('click'));
+daySquare.addEventListener('click', () => addEvent(`${month+1}/${i-paddingdays}/${year}`));
 } else {
 daySquare.classList.add('padding');
 }
@@ -62,10 +64,11 @@ const addEvent = (date) => {
     const currentEvent = events.find(x => x.date === click);
 
     if(currentEvent) {
-
+      console.log('Event is already there');
     } else {
-        
+       newEvent.style.display='block';
     }
+    modalBackDrop.style.display='block';
 }
 
 pressButton()
