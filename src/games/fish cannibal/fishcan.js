@@ -1,4 +1,4 @@
-let canvas = document.querySelector('canvas');
+let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 canvas.width = document.body.clientWidth;
 canvas.height = document.body.clientHeight;
@@ -28,19 +28,41 @@ const edible = ['./img/clownfish.png', './img/cowfish.png', './img/goldfish.png'
 const danger = ['./img/cocacola.png', './img/paket.png', './img/stone.png'];
 
 //main player
-const imgPlayer = new Image();
-imgPlayer.src = './img/player.png';
+const playerRight = new Image();
+playerRight.src = './img/player_right.png';
+const playerLeft = new Image();
+playerLeft.src = './img/player_left.png';
+
 class Player {
     constructor() {
         this.x = canvas.width / 2;
         this.y = canvas.height / 2;
+        this.width = 210;
+        this.height = 140;
     }
     draw() {
-        ctx.drawImage(imgPlayer, this.x, this.y, 150, 150);
+        let side = "right";
+        ctx.drawImage(playerRight, this.x, this.y, this.width, this.height);
+        if (dir == "left" && side == "right") {
+            side = "left";
+            ctx.clearRect(this.x, this.y, this.width, this.height);
+            ctx.drawImage(playerLeft, this.x, this.y, this.width, this.height);
+        } else ctx.drawImage(playerRight, this.x, this.y, this.width, this.height);
+    }
+
+    move() {
+        if (dir == "right" && this.x < canvas.width - this.width) {
+            this.x += 10;
+        } else if (dir == "left" && this.x > 0) {
+            this.x -= 10;
+        } else if (dir == "up" && this.y > 0) {
+            this.y -= 10;
+        } else if (dir == "down" && this.y < canvas.height - this.height) {
+            this.y += 10;
+        }
     }
 }
 const player = new Player();
-
 
 
 //background animation
@@ -99,20 +121,12 @@ for (let i = 0; i < bubbleCount; i++) {
     bubbles.push(tempBubble);
 }
 
+
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
     player.draw();
-
-    if (dir == "right" && player.x < canvas.width) {
-        player.x += 10;
-    } else if (dir == "left" && player.x > 0) {
-        player.x -= 10;
-    } else if (dir == "up" && player.y > 0) {
-        player.y -= 10;
-    } else if (dir == "down" && player.y < canvas.height) {
-        player.y += 10;
-    }
+    player.move();
 
     for (let i = 0; i < bubbles.length; i++) {
         bubbles[i].position.x = Math.sin(bubbles[i].count / bubbles[i].distanceBetweenWaves) * 50 + bubbles[i].xOff;

@@ -14,9 +14,36 @@ body {
 }
 
 canvas {
+    width: 1200px;
+    height: 700px;
     background: url("./img/background.jpg");
-    width: 900px;
-    height: 600px;
     border: 2px solid rgb(255, 255, 255);
-    border-radius: 2%;
+    border-radius: 20px;
+}
+
+button {
+    border-radius: 20px;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(241, 79, 144);
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
+
+button.ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
 }
