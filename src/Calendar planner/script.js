@@ -33,9 +33,12 @@ document.getElementById('monthButton').innerText = `${months[month]} ${year}`;
 calendar.innerHTML = ''; 
 
 for(let i=1; i<=displayedDays; i++){
+  
 const daySquare=document.createElement('div');
 daySquare.classList.add('day');
-
+if(i == day+paddingdays){
+  daySquare.classList.add('highlight');
+}
 if (i>paddingdays) {
 daySquare.innerText=i-paddingdays;
 daySquare.addEventListener('click', () => addEvent(`${month+1}/${i-paddingdays}/${year}`));
@@ -43,8 +46,8 @@ daySquare.addEventListener('click', () => addEvent(`${month+1}/${i-paddingdays}/
 daySquare.classList.add('padding');
 }
 calendar.appendChild(daySquare);
-}
 
+}
 }
 
 const pressButton = () => {
@@ -71,8 +74,8 @@ const addEvent = (date) => {
     modalBackDrop.style.display='block';
 }
 
+ 
 pressButton()
 display();
-
 
 
