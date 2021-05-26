@@ -24,8 +24,74 @@ function move(event) {
     }
 }
 
-const edible = ['./img/clownfish.png', './img/cowfish.png', './img/goldfish.png', './img/shrimp.png'];
-const danger = ['./img/cocacola.png', './img/paket.png', './img/stone.png'];
+
+const edibleImgSrc = ['./img/clownfish.png', './img/cowfish.png', './img/goldfish.png', './img/shrimp.png', './img/greyfish.png'];
+const dangerImgSrc = ['./img/cocacola.png', './img/paket.png', './img/stone.png'];
+
+const edible = {};
+const danger = {};
+
+const edibleImg = [];
+const edibleImgNames = [];
+const dangerImg = [];
+const dangerImgNames = [];
+
+for (const item of edibleImgSrc) {
+    const key = item.match(/[a-zA-Z]+(?=\.)/);
+    const value = new Image();
+    value.src = item;
+    edible[key] = value;
+}
+for (const item of Object.keys(edible)) {
+    edibleImgNames.push(item);
+}
+console.log(edibleImgNames); // prints imagenames
+
+for (const item of Object.values(edible)) {
+    edibleImg.push(item);
+}
+console.log(edibleImg);
+
+
+/*for (const item of dangerImgSrc) {
+    const key = item.match(/[a-zA-Z]+(?=\.)/);
+    const value = new Image();
+    value.src = item;
+    danger[key] = value;
+}
+
+for (const item of Object.keys(danger)) {
+    dangerImgNames.push(item);
+}
+console.log(dangerImgNames); // prints imagenames
+
+for (const item of Object.values(danger)) {
+    dangerImg.push(item);
+}
+console.log(dangerImg);*/
+
+let coordinatesOfEdible = {
+    x: Math.round(Math.random() * canvas.width),
+    y: Math.round(Math.random() * canvas.height),
+}
+console.log(coordinatesOfEdible);
+
+class Edible {
+    constructor(x, y, img) {
+        this.img = img;
+        this.x = x;
+        this.y = y;
+        this.width = 80;
+    }
+    draw() {
+        ctx.drawImage(this.img, this.x, this.y, 80, 80);
+    }
+    move() {
+        this.x += 100;
+        if (this.x == canvas.width - this.width) this.x -= 100;
+    }
+}
+
 
 //main player
 const playerRight = new Image();
@@ -47,9 +113,8 @@ class Player {
             side = "left";
             ctx.clearRect(this.x, this.y, this.width, this.height);
             ctx.drawImage(playerLeft, this.x, this.y, this.width, this.height);
-        } else ctx.drawImage(playerRight, this.x, this.y, this.width, this.height);
+        }
     }
-
     move() {
         if (dir == "right" && this.x < canvas.width - this.width) {
             this.x += 10;
@@ -63,6 +128,7 @@ class Player {
     }
 }
 const player = new Player();
+
 
 
 //background animation
@@ -127,6 +193,13 @@ function animate() {
     ctx.beginPath();
     player.draw();
     player.move();
+
+    for (let i = 0; i < edibleImg.length; i++) {
+        const index = Object.keys(edible).length;
+        edibleImgNames[index] = new Edible(coordinatesOfEdible.x + 150, coordinatesOfEdible.y + 150, edibleImg[i]); //problem
+        edibleImgNames[index].draw();
+        edibleImgNames[index].move();
+    }
 
     for (let i = 0; i < bubbles.length; i++) {
         bubbles[i].position.x = Math.sin(bubbles[i].count / bubbles[i].distanceBetweenWaves) * 50 + bubbles[i].xOff;
