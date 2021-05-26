@@ -1,9 +1,5 @@
 'use strict'
 
-let currentMonth=0;
-let click=null;
-let events=localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
-
 const calendar=document.getElementById('calendar');
 const weekdays=['Monday','Tuesday','Wednesday','Thursday',
 'Friday','Saturday','Sunday'];
@@ -12,6 +8,10 @@ const months=['January','February','March','April','May','June','July',
 const newEvent=document.getElementById('newEvent');
 const modalBackDrop=document.getElementById('modalBackDrop');
 const eventInput = document.getElementById('eventInput');
+
+let currentMonth=0;
+let currDay=null;
+let events=localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
 
 const display = () => {
 
@@ -27,7 +27,6 @@ const year=currDate.getFullYear();
 
 const daysAmount=32 - new Date(year, month, 32).getDate();
 const firstDay=new Date(year,month,1);
-const dateString=firstDay.toLocaleDateString('en-us');
 const firstWeekday=weekdays[firstDay.getDay()-1];
 const paddingdays=weekdays.indexOf(firstWeekday);
 const displayedDays=paddingdays+daysAmount;
@@ -45,11 +44,20 @@ if(i == day+paddingdays && currentMonth == 0){
 }
 if (i > paddingdays) {
 daySquare.innerText=i-paddingdays;
+
+const currentEvent = events.find(x => x.date === `${month+1}/${i-paddingdays}/${year}`);
+
+if (currentEvent) {
+ const eventName = document.createElement('div');
+ calendar.appendChild(eventName);
+}
+
 daySquare.addEventListener('click',
  () => addEvent(`${month+1}/${i-paddingdays}/${year}`));
 } else {
 daySquare.classList.add('padding');
 }
+
 calendar.appendChild(daySquare);
 
 }
@@ -70,15 +78,16 @@ document.getElementById('backButton')
 }
 
 const addEvent = (date) => {
-    click = date;
-    const currentEvent = events.find(x => x.date === click);
+    currDay = date;
+    const currentEvent = events.find(x => x.date === currDay);
 
     if(currentEvent) {
       console.log('Event is already there');
     } else {
        newEvent.style.display = 'block';
+       modalBackDrop.style.display = 'block';
     }
-    modalBackDrop.style.display = 'block';
+    
 }
 const closeWindow = () => {
   eventInput.value = '';
@@ -97,7 +106,13 @@ const cancel = () => {
 const saveEvents = () => {
   if (eventInput.value) {
     eventInput.classList.remove('error');
-    daySquare.classList.add('eventText');
+    events.push({
+     date: currDay,
+     event: eventInput.value,
+    });
+    localStorage.setItem('events', JSON.stringify(events));
+    closeWindow();
+    console.log(events);
   } else {
     eventInput.classList.add('error');
   }
