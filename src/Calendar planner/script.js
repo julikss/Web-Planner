@@ -36,12 +36,13 @@ for(let i=1; i<=displayedDays; i++){
   
 const daySquare=document.createElement('div');
 daySquare.classList.add('day');
-if(i == day+paddingdays){
+if(i == day+paddingdays && currentMonth == 0){
   daySquare.classList.add('highlight');
 }
-if (i>paddingdays) {
+if (i > paddingdays) {
 daySquare.innerText=i-paddingdays;
-daySquare.addEventListener('click', () => addEvent(`${month+1}/${i-paddingdays}/${year}`));
+daySquare.addEventListener('click',
+ () => addEvent(`${month+1}/${i-paddingdays}/${year}`));
 } else {
 daySquare.classList.add('padding');
 }
@@ -51,12 +52,14 @@ calendar.appendChild(daySquare);
 }
 
 const pressButton = () => {
-document.getElementById('nextButton').addEventListener('click', ()=>{
+document.getElementById('nextButton')
+.addEventListener('click', ()=>{
     currentMonth++;
     display();
 });
 
-document.getElementById('backButton').addEventListener('click', ()=>{
+document.getElementById('backButton')
+.addEventListener('click', ()=>{
     currentMonth--;
     display();
 });
@@ -69,12 +72,32 @@ const addEvent = (date) => {
     if(currentEvent) {
       console.log('Event is already there');
     } else {
-       newEvent.style.display='block';
+       newEvent.style.display = 'block';
     }
-    modalBackDrop.style.display='block';
+    modalBackDrop.style.display = 'block';
+}
+const closeWindow = () => {
+  eventInput.value = '';
+  newEvent.style.display = 'none';
+  modalBackDrop.style.display = 'none';
 }
 
- 
+const cancel = () => {
+  document.getElementById('cancelButton')
+  .addEventListener('click', ()=>{
+    closeWindow();
+});
+}
+
+const add = () => {
+  document.getElementById('addButton')
+  .addEventListener('click', ()=>{
+    closeWindow();
+});
+}
+
+cancel();
+add();
 pressButton()
 display();
 
