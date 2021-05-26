@@ -3,12 +3,24 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
         <title>Toast Notifaction</title>
-        <link rel="stylesheet" href="quotes.css" />
+        <link rel="stylesheet" href="quotes.css">
     </head>
     <body>
-        <div id="container"></div>
-        <button id="btn">Get daily quotes</button>
+        <div id="container">
+          <p id="gr"></p>
+        </div>
+        <input type="submit" value=" Get daily quotes " id="getQuo" onclick="lockoutSubmit(this); getGreeting()">
+
+        <div id="overlay">
+          <div id="text">Welcome! You can get a quote every 4 hours.</div>
+        </div>
+        <div style="padding:20px">
+          <button id="help"><i class="far fa-question-circle"></i></button>
+        </div>
+
         <script src="quotes.js" ></script>
     </body>
 </html>

@@ -53,7 +53,7 @@ body{
 
 header{
   background-color: #fbee6c;
-  
+
 }
 
 .pastel-mode header {
@@ -75,6 +75,20 @@ button{
 button:hover{
   background-color:#29333f ;
   color:#fbee6c;
+}
+
+.btn{
+  cursor: pointer;
+  color: #c7c7c7;
+  margin: 1px 6px;
+  font-size: 30px;
+  float: left;
+  margin: 5px 20px;
+
+}
+
+.btn:hover{
+  color:#29333f;
 }
 
 .pastel-mode button{
@@ -158,12 +172,12 @@ button:hover{
   width: 200px;
   height: 310px;
   word-wrap: break-word;
-  margin: 10px; 
+  margin: 10px;
   background:rgba(255, 255, 255, 0.2);
   cursor: pointer;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.9);
-  
-  
+
+
 }
 
 
@@ -251,6 +265,26 @@ div:hover span {
     transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
 }
 
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
 
-
-
+#text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}

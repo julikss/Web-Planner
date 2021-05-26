@@ -60,6 +60,17 @@ const hideCreateCardBox = () => {
 }
 
 document.querySelector('.dark-mode-switch').onclick = () => {
-    document.querySelector('body').classList.toggle('pastel-mode');  
+    document.querySelector('body').classList.toggle('pastel-mode');
 }
 
+/*document.querySelector('.btn').onclick = () => {
+  document.querySelector('body').classList.guide('')
+}*/
+
+function showGuide() {
+  document.getElementById("overlay").style.display = "block";
+}
+
+function offGuide() {
+  document.getElementById("overlay").style.display = "none";
+}

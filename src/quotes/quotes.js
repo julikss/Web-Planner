@@ -1,5 +1,6 @@
-
-
+const hideText = document.getElementById("overlay");
+const getText = document.getElementById("help");
+const getQuotes = document.getElementById("getQuo");
 
 function randomItem(quotes) {
   return quotes[Math.floor(Math.random()*quotes.length)];
@@ -11,24 +12,54 @@ const quotes = ["Главное в жизни - это уметь думать. 
     "Я говорил, что мы выиграем. Хотя я не верил в это",
     "Если головоломка не сложилась и тебе не подобрать пазлы, то начинай сначала"];
 
-window.onload = pageLoad
+function getGreeting() {
+  let greeting;
+  const time = new Date().getHours();
 
-function pageLoad() {
-  const startBtn = document.getElementById("btn").addEventListener('click', createNotification);
+  if(time < 10) greeting = "Good morning";
+  else if (time < 18) greeting = "Good day";
+  else greeting = "Good evening";
+
+  document.getElementById("gr").innerHTML = greeting + " " + randomItem(quotes);
+
+  function createNotification() {
+    const notif = document.createElement("div");
+    notif.classList.add("toast");
+    notif.innerText = greeting + " " + randomItem(quotes);
+
+    container.appendChild(notif);
+  }
+}
+function lockoutSubmit(button) {
+  const oldValue = button.value;
+
+  button.setAttribute('disabled', true);
+
+  setTimeout(function() {
+    button.value = oldValue;
+    button.removeAttribute('disabled');
+  }, 4000 * 60 * 60);
 }
 
-function createNotification() {
-  const notif = document.createElement("div");
-  notif.classList.add("toast");
+getQuotes.addEventListener("click", () => {
+  getGreeting();
+  createNotification();
+  lockoutSubmit(button);
+});
 
-  notif.innerText = randomItem(quotes);
+    getText.addEventListener("click", () => {
+      document.getElementById("overlay").style.display = "block";
+    });
 
+    hideText.addEventListener("click", () => {
+      document.getElementById("overlay").style.display = "none";
+    });
 
-  container.appendChild(notif);
+    function setImage() {
+      const time = new Date().getHours();
 
-  setTimeout(() => {
-      notif.remove();
-   }, 6000);
-
-   btn.removeEventListener('click',createNotification);
-}
+      if(time < 14) {document.body.style.backgroundImage = "url('back1.png')";}
+      else if (time < 19) {document.body.style.backgroundImage = "url('back2.png')";}
+      else {document.body.style.backgroundImage = "url('back3.png')";}
+    }
+setImage();

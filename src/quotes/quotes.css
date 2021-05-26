@@ -1,10 +1,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Squada+One&family=Staatliches&display=swap');
-
 * {
     box-sizing: border-box;
 }
-
 body{
     display: flex;
     align-items: center;
@@ -12,48 +10,80 @@ body{
     font-family: 'Squada One', cursive;
     margin: 0;
     min-height: 100vh;
-    background: #29333f;
+    background-position: center;
 }
-
-button{
-    background-color: #29333f;
+#getQuo{
+    background-color: rgba(0, 0, 0, 0.3);
     color: #fbee6c;
     font-family: inherit;
     padding: 1rem;
     border-radius: 5px;
     border: 5px solid #fbee6c;
     cursor:pointer;
-    font-size: 20px;
+    font-size: 26px;
     animation:Appear 1s;
   }
-
   @keyframes Appear{
     0%{opacity:0;}
     10%{opacity:0;}
     50%{opacity:0;}
     100%{opacity:1;}
     }
-
-button:hover{
+#getQuo:hover{
   transition: 0.3s;
   background: #fbee6c;
   color: #29333f;
 }
-
+#help{
+  position: absolute;
+  bottom: 12px;
+  right: 20px;
+  background-color: rgba(0,0,0,0.1);
+  color: #c7c7c7;
+  font-family: inherit;
+  padding: 1rem;
+  cursor:pointer;
+  border-radius: 5px;
+  border: 3px solid #c7c7c7;
+  font-size: 26px;
+  animation:Appear 1s;
+}
+#help:hover{
+  transition: 0.3s;
+  color: #fbee6c;
+}
 #container{
     position: fixed;
     bottom: 10px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30%;
-
-}
-
-.toast{
-    background-color: #fbee6c;
+    background-color: rgba(0,0,0,0.2);
     border-radius: 5px;
     color: #29333f;
     padding: 2rem;
     margin: 1rem;
     font-size: 23px;
+}
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
 }
