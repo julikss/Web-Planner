@@ -1,13 +1,17 @@
+'use strict'
+
 let currentMonth=0;
 let click=null;
 let events=localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
 
 const calendar=document.getElementById('calendar');
-const weekdays=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+const weekdays=['Monday','Tuesday','Wednesday','Thursday',
+'Friday','Saturday','Sunday'];
 const months=['January','February','March','April','May','June','July',
 'August','September','October','November','December'];
 const newEvent=document.getElementById('newEvent');
 const modalBackDrop=document.getElementById('modalBackDrop');
+const eventInput = document.getElementById('eventInput');
 
 const display = () => {
 
@@ -80,24 +84,38 @@ const closeWindow = () => {
   eventInput.value = '';
   newEvent.style.display = 'none';
   modalBackDrop.style.display = 'none';
+  eventInput.classList.remove('error');
 }
 
 const cancel = () => {
   document.getElementById('cancelButton')
-  .addEventListener('click', ()=>{
+  .addEventListener('click', ( )=> {
     closeWindow();
 });
 }
+
+const saveEvents = () => {
+  if (eventInput.value) {
+    eventInput.classList.remove('error');
+    daySquare.classList.add('eventText');
+  } else {
+    eventInput.classList.add('error');
+  }
+ }
 
 const add = () => {
   document.getElementById('addButton')
-  .addEventListener('click', ()=>{
-    closeWindow();
+  .addEventListener('click', () => {
+    saveEvents();
 });
 }
 
-cancel();
-add();
+const manageButtons = () => {
+  cancel();
+  add();
+}
+
+manageButtons();
 pressButton()
 display();
 
