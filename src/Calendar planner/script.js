@@ -11,7 +11,8 @@ const eventInput = document.getElementById('eventInput');
 
 let currentMonth=0;
 let currDay=null;
-let events=localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
+let events=localStorage.getItem('events') ?
+ JSON.parse(localStorage.getItem('events')) : [];
 
 const display = () => {
 
@@ -31,7 +32,8 @@ const firstWeekday=weekdays[firstDay.getDay()-1];
 const paddingdays=weekdays.indexOf(firstWeekday);
 const displayedDays=paddingdays+daysAmount;
 
-document.getElementById('monthButton').innerText = `${months[month]} ${year}`;
+document.getElementById('monthButton')
+.innerText = `${months[month]} ${year}`;
 
 calendar.innerHTML = ''; 
 
@@ -45,11 +47,15 @@ if(i == day+paddingdays && currentMonth == 0){
 if (i > paddingdays) {
 daySquare.innerText=i-paddingdays;
 
-const currentEvent = events.find(x => x.date === `${month+1}/${i-paddingdays}/${year}`);
+const currentEvent = events.find(x =>
+   x.date === `${month+1}/${i-paddingdays}/${year}`);
 
 if (currentEvent) {
+  console.log(currentEvent);
  const eventName = document.createElement('div');
- calendar.appendChild(eventName);
+ eventName.classList.add('event');
+ eventName.innerText = currentEvent.event;
+ daySquare.appendChild(eventName);
 }
 
 daySquare.addEventListener('click',
@@ -59,7 +65,6 @@ daySquare.classList.add('padding');
 }
 
 calendar.appendChild(daySquare);
-
 }
 }
 
@@ -83,6 +88,9 @@ const addEvent = (date) => {
 
     if(currentEvent) {
       console.log('Event is already there');
+      newEvent.style.display = 'block';
+       modalBackDrop.style.display = 'block';
+       eventInput.value = currentEvent.event;
     } else {
        newEvent.style.display = 'block';
        modalBackDrop.style.display = 'block';
@@ -94,6 +102,7 @@ const closeWindow = () => {
   newEvent.style.display = 'none';
   modalBackDrop.style.display = 'none';
   eventInput.classList.remove('error');
+  display();
 }
 
 const cancel = () => {
@@ -133,5 +142,5 @@ const manageButtons = () => {
 manageButtons();
 pressButton()
 display();
-
+//localStorage.clear();
 
