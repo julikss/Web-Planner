@@ -91,7 +91,7 @@ button {
   flex-direction: column;
   justify-content: space-between;
 }
-#newEvent, #deleteEvent {
+#newEvent, #correctEvent {
   display: none;
   z-index: 20;
   padding: 25px;

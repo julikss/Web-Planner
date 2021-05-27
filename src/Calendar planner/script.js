@@ -88,9 +88,9 @@ const addEvent = (date) => {
 
     if(currentEvent) {
       console.log('Event is already there');
-      newEvent.style.display = 'block';
+      correctEvent.style.display = 'block';
        modalBackDrop.style.display = 'block';
-       eventInput.value = currentEvent.event;
+       document.getElementById('eventText').innerText = currentEvent.event;
     } else {
        newEvent.style.display = 'block';
        modalBackDrop.style.display = 'block';
@@ -139,7 +139,33 @@ const manageButtons = () => {
   add();
 }
 
+const deleteWindow = () => {
+  deleteWindow.innerText = eventInput.value;
+  correctEvent.style.display = 'none';
+  modalBackDrop.style.display = 'none';
+  eventInput.classList.remove('error');
+  display();
+}
+
+const deleteEvent = () => {
+events = events.filter(x => x.date != currDay);
+deleteWindow();
+}
+
+const finalButtons = () => {
+  document.getElementById('deleteButton')
+.addEventListener('click', ()=>{
+  deleteEvent();
+});
+
+document.getElementById('closeButton')
+  .addEventListener('click', ( )=> {
+    deleteWindow();
+});
+}
+
 manageButtons();
+finalButtons();
 pressButton()
 display();
 //localStorage.clear();
