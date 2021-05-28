@@ -87,7 +87,6 @@ const addEvent = (date) => {
     const currentEvent = events.find(x => x.date === currDay);
 
     if(currentEvent) {
-      console.log('Event is already there');
       correctEvent.style.display = 'block';
        modalBackDrop.style.display = 'block';
        document.getElementById('eventText').innerText = currentEvent.event;
