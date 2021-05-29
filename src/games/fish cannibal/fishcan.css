@@ -14,9 +14,10 @@ body {
 }
 
 canvas {
-    width: 1200px;
-    height: 700px;
+    width: 1500px;
+    height: 800px;
     background: url("./img/background.jpg");
+    background-size: 100%;
     border: 2px solid rgb(255, 255, 255);
     border-radius: 20px;
 }
