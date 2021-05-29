@@ -1,0 +1,29 @@
+#canvas {
+    width: 625px;
+    height: 625px;   
+    background-color:  #29333f ;
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.cell {
+    width: 25px;
+    height: 25px; 
+}
+body {
+    margin: 100px;
+    background-color:  #fbee6c ;
+}
+
+.snakeBody {
+    width: 25px;
+    height: 25px;  
+    background-color:  green ;
+}
+
+.apple {
+    width: 25px;
+    height: 25px;  
+    background-color:  red ;
+}
