@@ -20,17 +20,17 @@ const dangerImg = [];
 const edible = [];
 const danger = [];
 
-document.addEventListener("keydown", move);
+document.addEventListener('keydown', move);
 
 function move(event) {
     if (event.keyCode == 37) {
-        dir = "left";
+        dir = 'left';
     } else if (event.keyCode == 39) {
-        dir = "right";
+        dir = 'right';
     } else if (event.keyCode == 38) {
-        dir = "up";
+        dir = 'up';
     } else if (event.keyCode == 40) {
-        dir = "down";
+        dir = 'down';
     }
 }
 
@@ -54,9 +54,8 @@ for (const item of dangerImgSrc) {
 
 function generateDir() {
     const direction = ['right', 'left', 'up', 'down'];
-    return direction[Math.round(Math.random() * 3)];
+    return direction[Math.floor(Math.random() * 3)];
 }
-
 
 let createEdible = function(img) {
     this.pos = { x: Math.random() * canvas.width, y: Math.random() * canvas.height };
@@ -64,23 +63,25 @@ let createEdible = function(img) {
     this.height = 140;
     this.img = img;
     this.dir = generateDir();
+    console.log(this.dir);
     this.draw = function() {
         ctx.drawImage(this.img, this.pos.x, this.pos.y, 120, 120);
     }
 
     this.move = function() {
 
-        if (this.dir == "right" && this.pos.x < Math.random() * (canvas.width - this.width)) {
+        if (this.dir == 'right' && this.pos.x < Math.random() * (canvas.width - this.width)) {
             this.pos.x += 10;
+            generateDir();
+            console.log(this.dir);
 
-        } else if (this.dir == "left" && this.pos.x > 0) {
+        } else if (this.dir == 'left' && this.pos.x > 0) {
             this.pos.x -= 10;
-        } else if (this.dir == "up" && this.pos.y > 0) {
+        } else if (this.dir == 'up' && this.pos.y > 0) {
             this.pos.y -= 10;
 
-        } else if (this.dir == "down" && this.pos.y < Math.random() * (canvas.height - this.height)) {
+        } else if (this.dir == 'down' && this.pos.y < Math.random() * (canvas.height - this.height)) {
             this.pos.y += 10;
-
         }
     }
     this.remove = function() {
@@ -94,6 +95,7 @@ for (let i = 0; i < edibleImg.length; i++) {
     edible.push(fish);
 }
 
+
 let createDanger = function(img) {
     this.pos = { x: Math.random() * canvas.width, y: 0 };
     console.log(this.pos)
@@ -106,7 +108,10 @@ let createDanger = function(img) {
     this.move = function() {
         if (this.pos.y <= canvas.height - this.height) {
             this.pos.y += 10;
-        } else ctx.clearRect(this.pos.x, this.pos.y, this.width, this.height);
+        } else {
+            this.pos.y = canvas.height + this.height;
+            ctx.clearRect(this.pos.x, this.pos.y, this.width, this.height);
+        }
     }
     this.remove = function() {
         ctx.clearRect(this.pos.x, this.pos.y, this.width, this.height);
@@ -118,6 +123,7 @@ for (let i = 0; i < dangerImg.length; i++) {
     let item = new createDanger(dangerImg[i]);
     edible.push(item);
 }
+
 
 class Player {
     constructor(imgR, imgL) {
@@ -132,15 +138,15 @@ class Player {
     }
     render() {
         ctx.drawImage(this.imgR, this.x, this.y, this.width, this.height);
-        if (dir == "right" && this.x < canvas.width - this.width) {
+        if (dir == 'right' && this.x < canvas.width - this.width) {
             this.x += 10;
-        } else if (dir == "left" && this.x > 0) {
+        } else if (dir == 'left' && this.x > 0) {
             ctx.clearRect(this.x, this.y, this.width, this.height);
             ctx.drawImage(this.imgL, this.x, this.y, this.width, this.height);
             this.x -= 10;
-        } else if (dir == "up" && this.y > 0) {
+        } else if (dir == 'up' && this.y > 0) {
             this.y -= 10;
-        } else if (dir == "down" && this.y < canvas.height - this.height) {
+        } else if (dir == 'down' && this.y < canvas.height - this.height) {
             this.y += 10;
         }
     }
@@ -148,8 +154,13 @@ class Player {
         this.width += 100;
         this.height += 100;
     }
+    remove() {
+        ctx.clearRect(this.x, this.y, this.width, this.height);
+    }
 }
+
 const player = new Player('./img/player_right.png', './img/player_left.png');
+
 
 class Shark {
     constructor(imgR, imgL) {
@@ -165,16 +176,16 @@ class Shark {
     }
     render() {
         ctx.drawImage(this.imgR, this.x, this.y, this.width, this.height);
-        if (this.dir == "right" && this.x < Math.random() * (canvas.width - this.width)) {
+        if (this.dir == 'right' && this.x < Math.random() * (canvas.width - this.width)) {
             this.x += 10;
-        } else if (this.dir == "left" && this.x > 0) {
+        } else if (this.dir == 'left' && this.x > 0) {
             ctx.clearRect(this.x, this.y, this.width, this.height);
             ctx.drawImage(this.imgL, this.x, this.y, this.width, this.height);
             this.x -= 10;
-        } else if (this.dir == "up" && this.y > 0) {
+        } else if (this.dir == 'up' && this.y > 0) {
             this.y -= 10;
 
-        } else if (this.dir == "down" && this.y < Math.random() * (canvas.height - this.height)) {
+        } else if (this.dir == 'down' && this.y < Math.random() * (canvas.height - this.height)) {
             this.y += 10;
 
         }
@@ -186,20 +197,20 @@ class Shark {
 
 const shark = new Shark('./img/shark_right.png', './img/shark_left.png');
 
+
 //background animation
 let createBubble = function() {
-    this.position = { x: 0, y: 0 };
+    this.pos = { x: 0, y: 0 };
     this.radius = 10 + Math.random() * 10;
     this.xOff = Math.random() * canvas.width - this.radius;
     this.yOff = Math.random() * canvas.height;
     this.distanceBetweenWaves = 50 + Math.random() * 40;
     this.count = canvas.height + this.yOff;
-    this.color = '#ffffff';
     this.maxRotation = 85;
     this.rotation = Math.floor(Math.random() * (this.maxRotation - (this.maxRotation * -1))) + (this.maxRotation * -1);
     this.rotationDirection = 'forward';
-    this.resetPosition = function() {
-        this.position = { x: 0, y: 0 };
+    this.resetPos = function() {
+        this.pos = { x: 0, y: 0 };
         this.radius = 10 + Math.random() * 10;
         this.xOff = Math.random() * canvas.width - this.radius;
         this.yOff = Math.random() * canvas.height;
@@ -221,10 +232,10 @@ let createBubble = function() {
             }
         }
         ctx.save();
-        ctx.translate(this.position.x, this.position.y);
+        ctx.translate(this.pos.x, this.pos.y);
         ctx.rotate(this.rotation * Math.PI / 180);
         ctx.beginPath();
-        ctx.strokeStyle = '#ffffff';
+        ctx.strokeStyle = 'white';
         ctx.arc(0, 0, this.radius - 3, 0, Math.PI * 1.5, true);
         ctx.stroke();
         ctx.beginPath();
@@ -235,30 +246,64 @@ let createBubble = function() {
 }
 
 for (let i = 0; i < bubbleCount; i++) {
-    let tempBubble = new createBubble();
-    bubbles.push(tempBubble);
+    let bubble = new createBubble();
+    bubbles.push(bubble);
 }
+
 
 function drawInfo() {
     const livesImg = new Image();
     livesImg.src = './img/lives.png';
-    ctx.fillStyle = "white";
-    ctx.font = "20px Arial";
-    ctx.drawImage(livesImg, 10, 20, 70, 50);
-    ctx.drawImage(livesImg, 80, 20, 70, 50);
-    ctx.drawImage(livesImg, 150, 20, 70, 50);
-    ctx.fillText('Score:' + score, 20, 100);
+    ctx.fillStyle = 'white';
+    ctx.font = '20px Arial';
+    let diff = 0;
+    for (let i = 0; i < lives; i++) {
+        ctx.drawImage(livesImg, 10 + diff, 20, 70, 50);
+        diff += 70;
+    }
+    ctx.fillText(`Score: ${score}`, 20, 100);
+}
+
+function gameOver() {
+    const loser = new Image();
+    loser.src = './img/loser.png';
+    ctx.fillStyle = 'red';
+    ctx.font = 'bold 50px Arial';
+    if (lives == 0) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(loser, canvas.width / 2 - 250, canvas.height / 2 - 200, 500, 500);
+        ctx.fillText('GAME OVER!!!', canvas.width / 2 - 220, canvas.height / 2 - 350);
+        console.log('GAME OVER!!!');
+        ctx.fillText(`Your score: ${score}`, canvas.width / 2 - 200, canvas.height / 2 - 300);
+        tryAgain.style.visibility = 'visible';
+        exit.style.visibility = 'visible';
+    }
+}
+
+function gameWin() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'red';
+    ctx.font = 'bold 50px Arial';
+    setTimeout(() => {
+        ctx.fillText('GONGRATULATIONS!!!', canvas.width / 2 - 220, canvas.height / 2 - 350);
+    }, 0);
+    ctx.fillText(`Your score: ${score}`, canvas.width / 2 - 200, canvas.height / 2 - 300);
+    tryAgain.style.visibility = 'visible';
+    exit.style.visibility = 'visible';
+
 }
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.beginPath();
+    tryAgain.style.visibility = 'hidden';
+    exit.style.visibility = 'hidden';
+    start.style.visibility = 'hidden';
     player.render();
     shark.render();
 
     for (let i = 0; i < bubbles.length; i++) {
-        bubbles[i].position.x = Math.sin(bubbles[i].count / bubbles[i].distanceBetweenWaves) * 50 + bubbles[i].xOff;
-        bubbles[i].position.y = bubbles[i].count;
+        bubbles[i].pos.x = Math.sin(bubbles[i].count / bubbles[i].distanceBetweenWaves) * 50 + bubbles[i].xOff;
+        bubbles[i].pos.y = bubbles[i].count;
         bubbles[i].render();
 
         if (bubbles[i].count < 0 - bubbles[i].radius) {
@@ -271,24 +316,32 @@ function animate() {
     for (let i = 0; i < edible.length; i++) {
         edible[i].draw();
         edible[i].move();
-        //does not work
-        if ((edible[i].pos.x == player.x) || (edible[i].pos.y == player.y)) {
+        if ((edible[i].pos.x == player.x) && (edible[i].pos.y == player.y)) {
             player.resize();
             edible[i].remove();
             score++;
         }
     }
+
     for (let i = 0; i < danger.length; i++) {
         danger[i].draw();
         danger[i].move();
         //does not work
-        if ((danger[i].pos.x == player.x) || (danger[i].pos.y == player.y)) {
+        if ((danger[i].pos.x == player.x) && (danger[i].pos.y == player.y)) {
             danger[i].remove();
             lives--;
             console.log(lives)
         }
     }
+
+    if ((shark.x == player.x) && (shark.y == player.y)) {
+        player.remove();
+        lives = 0;
+    }
+
     drawInfo();
+    gameOver();
+    //gameWin();
 
     requestAnimationFrame(animate);
 }

@@ -25,26 +25,19 @@ canvas {
 button {
     border-radius: 20px;
     border: 2px solid rgb(255, 255, 255);
-    background-color: rgb(241, 79, 144);
-    color: #FFFFFF;
-    font-size: 12px;
+    background-color: #fbee6c;
+    color: #ff0000;
+    font-size: 15px;
     font-weight: bold;
     padding: 12px 45px;
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
     cursor: pointer;
+    text-align: center;
+    justify-content: center;
 }
 
 button:active {
     transform: scale(0.95);
-}
-
-button:focus {
-    outline: none;
-}
-
-button.ghost {
-    background-color: transparent;
-    border-color: #FFFFFF;
 }

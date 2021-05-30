@@ -2,13 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <title>Toast Notifaction</title>
-    <link rel="stylesheet" href="quotes.css">
+    <link rel="stylesheet" href="todolist.css">
     <link rel="stylesheet" href="../styles/bar.css">
+    <title>Todolist</title>
 </head>
 
 <body>
@@ -28,19 +29,35 @@
         </a>
     </nav>
 
-    <div id="container">
-        <p id="gr"></p>
-    </div>
-    <input type="submit" value=" Get daily quotes " id="getQuo" onclick="lockoutSubmit(this); getGreeting()">
-
-    <div id="overlay">
-        <div id="text">Welcome! You can get a quote every 4 hours.</div>
-    </div>
-    <div style="padding:20px">
-        <button id="help"><i class="far fa-question-circle"></i></button>
+    <div id="settings">
+        <h4>BACKGROUND</h4>
+        <div class="changeBgr">
+            <img id="bgrNone" class="background" src="img/todolist/bgrNone.jpg" />
+            <img id="bgr1" class="background" src="img/todolist/bgr1.jpg" />
+            <img id="bgr2" class="background" src="img/todolist/bgr2.jpg" />
+            <img id="bgr3" class="background" src="img/todolist/bgr3.jpg" />
+        </div>
     </div>
 
-    <script src="quotes.js"></script>
+    <div id="root">
+        <div class="container">
+            <h3>Add...</h3>
+            <input id="new-task" type="text" placeholder="Add a task">
+            <button id="add">ADD</button>
+            <h3>NOT COMPLETED</h3>
+            <ul id="unfinished-tasks">
+
+            </ul>
+
+            <h3>COMPLETED</h3>
+            <ul id="finished-tasks">
+
+            </ul>
+        </div>
+
+    </div>
+
+    <script src="./todolist.js"></script>
 </body>
 
 </html>

@@ -20,35 +20,14 @@
 <body>
 
     <nav class="menu">
-        <a href="./index.html" class="menu__item menu__item--active" data-tooltip="Home">
+        <a href="mainpage.html" class="menu__item menu__item--active" data-tooltip="Home">
             <i class="fa fa-home"></i>
         </a>
-        <a href="./auth.html" class="menu__item" data-tooltip="Sign in/up">
-            <i class="fas fa-sign-in"></i>
-        </a>
-        <a href="./" class="menu__item" data-tooltip="Schedule">
-            <i class="fas fa-table"></i>
-        </a>
-        <a href="./" class="menu__item" data-tooltip="Edit">
-            <i class="far fa-edit"></i>
-        </a>
-        <a href="./" class="menu__item" data-tooltip="List">
-            <i class="far fa-list-alt"></i>
-        </a>
-        <a href="./Calendar planner/index.html" class="menu__item" data-tooltip="Calendar">
+        <a href="./calendar planner/calendar.html" class="menu__item" data-tooltip="Calendar">
             <i class="far fa-calendar-alt"></i>
         </a>
         <a href="./quotes/quotes.html" class="menu__item" data-tooltip="Quotes">
             <i class="fas fa-square"></i>
-        </a>
-        <a href="./" class="menu__item" data-tooltip="Support us">
-            <i class="far fa-heart"></i>
-        </a>
-        <a href="./" class="menu__item" data-tooltip="Your stars">
-            <i class="fa fa-star"></i>
-        </a>
-        <a href="" class="menu__item" data-tooltip="Sign out">
-            <i class="fa fa-sign-out"></i>
         </a>
         <a href="https://github.com/julikss/Web-Planner" class="menu__item" data-tooltip="Our GitHub">
             <i class="fa fa-code"></i>
@@ -60,7 +39,7 @@
             @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
         </style>
 
-        <div class="card" onclick="document.location = 'todolist.html'">
+        <div class="card" onclick="document.location = './todolist/todolist.html'">
             <img src="https://img.icons8.com/nolan/64/checklist.png" class="card__image">
             <p class="card__name">TODOLIST</p>
             <div class="grid-container">
@@ -69,7 +48,7 @@
 
         </div>
 
-        <div class="card" onclick="document.location = 'calendar.html'">
+        <div class="card" onclick="document.location = './calendar planner/calendar.html'">
             <img src="https://img.icons8.com/nolan/64/tasks--v1.png" class="card__image">
             <p class="card__name">CALENDAR</p>
             <div class="grid-container">
@@ -77,11 +56,11 @@
             </div>
         </div>
 
-        <div class="card" onclick="document.location = './Cards/card.html'">
+        <div class="card" onclick="document.location = './quotes/quotes.html'">
             <img src="https://img.icons8.com/nolan/64/mind-map.png" class="card__image">
-            <p class="card__name">LEARN ENGLISH</p>
+            <p class="card__name">DAILY QUOTES</p>
             <div class="grid-container">
-                <p>Google Translate might be helpful, but it's better to know English yourself</p>
+                <p>Get your daily inspiration!</p>
             </div>
         </div>
 
@@ -93,8 +72,9 @@
             </div>
             <button id="bulbul" onclick="document.location = './games/bulbul/bulbul.html'">BULBUL</button>
             <button id="bulbul" onclick="document.location = './games/fish cannibal/fishcan.html'">FISH CANNIBAL</button>
+            <button id="bulbul" onclick="document.location = './games/snake/snake.html'">SNAKE</button>
         </div>
-        <script src="./index.js"></script>
+        <script src="./mainpage.js"></script>
 
 </body>
 
