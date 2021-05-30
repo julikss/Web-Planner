@@ -133,17 +133,13 @@ const add = () => {
     });
 }
 
-const manageButtons = () => {
-  cancel();
-  add();
-}
-
 const deleteWindow = () => {
   deleteWindow.innerText = eventInput.value;
   correctEvent.style.display = 'none';
   modalBackDrop.style.display = 'none';
   eventInput.classList.remove('error');
   display();
+  localStorage.clear();
 }
 
 const deleteEvent = () => {
@@ -163,9 +159,14 @@ const finalButtons = () => {
     });
 }
 
+const manageButtons = () => {
+  pressButton();
+  cancel();
+  add();
+  finalButtons();
+}
+
 manageButtons();
-finalButtons();
-pressButton()
 display();
-//localStorage.clear();
+
 
