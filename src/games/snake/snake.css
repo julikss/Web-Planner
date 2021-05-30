@@ -20,10 +20,12 @@ body {
     width: 25px;
     height: 25px;  
     background-color:  green ;
+    border-radius: 40%;
 }
 
 .apple {
     width: 25px;
     height: 25px;  
     background-color:  red ;
+    border-radius: 50%;
 }
