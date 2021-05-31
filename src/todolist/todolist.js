@@ -35,11 +35,10 @@ function createNewElement(task, finished) {
   deleteButton.className = "delete";
   deleteButton.innerHTML = "<i class='icons'>delete</i>";
 
-  listItem.appendChild(checkbox);
-  listItem.appendChild(label);
-  listItem.appendChild(input);
-  listItem.appendChild(deleteButton);
-  listItem.appendChild(editButton);
+  const appendChild = [checkbox, label, input, deleteButton, editButton];
+  for (let i = 0; i < appendChild.length; i++) {
+    listItem.appendChild(appendChild[i]);
+  }
 
   return listItem;
 }
@@ -67,20 +66,18 @@ function editTask() {
   const listItem = this.parentNode;
   const label = listItem.querySelector('label');
   const input = listItem.querySelector('input[type=text]');
-
   const containsClass = listItem.classList.contains('editMode');
 
   if (containsClass) {
     label.innerText = input.value;
-    editButton.className = "edit";
-    editButton.innerHTML = "<i class='icons'>edit</i>";
-    save();
   } else {
     input.value = label.innerText;
-    editButton.className = "save";
-    editButton.innerHTML = "<i class='icons'>save</i>";
-
   }
+  const className = (containsClass) ? 'edit' : 'save';
+  editButton.className = className;
+  editButton.innerHTML = `<i class="icons">${className}</i>`;
+  if (containsClass) save();
+
   listItem.classList.toggle('editMode');
 }
 
