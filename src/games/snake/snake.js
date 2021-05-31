@@ -12,11 +12,12 @@ let initCoords = {
 
 let snakeObjects = []; //snake body
 let snakeParametres = {
-    initLength: 3,
+    initLength: 5,
     snakeX: 13,
     snakeY: 13,
 };
 let apple;
+let applePos;
 
 //making cells
 for (let i = 0; i < blocksAmount; i++) {
@@ -47,7 +48,7 @@ const randomPos = () => {
 }
 
 const createApple = () => {
-    let applePos = randomPos();
+    applePos = randomPos();
     apple = document.querySelector('[x = "' + applePos[0] +
         '"][y = "' + applePos[1] + '"]');
     while (apple.classList.contains('snakeBody')) {
@@ -71,15 +72,17 @@ class Snake {
             snakeObjects.push(document.querySelector('[x = "' + (this.x - i) +
                 '"][y = "' + (this.y) + '"]'));
         }
-        for (let el of snakeObjects) {
-            el.classList.add('snakeBody');
+        console.log(snakeObjects);
+        snakeObjects[0].classList.add('snakeHead');
+        for (let el = 1; el < snakeObjects.length; el++) {
+            snakeObjects[el].classList.add('snakeBody');
         }
     }
-
     moveSnake() {
         let headCoords = [snakeObjects[0].getAttribute('x'),
             snakeObjects[0].getAttribute('y')
         ];
+        snakeObjects[0].classList.remove('snakeHead');
         snakeObjects[snakeObjects.length - 1].classList.remove('snakeBody');
         snakeObjects.pop();
 
@@ -113,29 +116,45 @@ class Snake {
                 .getAttribute('y') + '"]'));
             initScore++;
             createApple();
+            console.log(initScore);
         }
-        for (let el of snakeObjects) {
-            el.classList.add('snakeBody');
+        snakeObjects[0].classList.add('snakeHead');
+        for (let el = 1; el < snakeObjects.length; el++) {
+            snakeObjects[el].classList.add('snakeBody');
+        }
+    }
+    endGame() {
+        this.moveSnake();
+        if (snakeObjects[0].classList.contains('snakeBody')) {
+            console.log('game over');
+            //document.getElementById('gameover').style.display = 'block';
+            snakeObjects[0].classList.remove('snakeHead');
+            for (let el = 1; el < snakeObjects.length; el++) {
+                snakeObjects[el].classList.remove('snakeBody');
+            }
+            snakeObjects.splice(0, snakeObjects.length);
+            this.initializeSnake();
         }
     }
 }
 const snake = new Snake(snakeParametres.snakeX, snakeParametres.snakeY);
 
 snake.initializeSnake();
+snake.endGame();
 //snake.moveSnake();
 
-window.addEventListener('keydown', function(e) {
-    if (e.keyCode == 37 && direct != 'right') {
+window.addEventListener('keydown', (x) => {
+    if (x.keyCode == 37 && direct != 'right') {
         direct = 'left';
-        snake.moveSnake();
-    } else if (e.keyCode == 38 && direct != 'down') {
+        snake.endGame();
+    } else if (x.keyCode == 38 && direct != 'down') {
         direct = 'up';
-        snake.moveSnake();
-    } else if (e.keyCode == 39 && direct != 'left') {
+        snake.endGame();
+    } else if (x.keyCode == 39 && direct != 'left') {
         direct = 'right';
-        snake.moveSnake();
-    } else if (e.keyCode == 40 && direct != 'up') {
+        snake.endGame();
+    } else if (x.keyCode == 40 && direct != 'up') {
         direct = 'down';
-        snake.moveSnake();
+        snake.endGame();
     }
 });

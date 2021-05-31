@@ -1,7 +1,7 @@
 #canvas {
     width: 625px;
-    height: 625px;   
-    background-color:  #29333f ;
+    height: 625px;
+    background-color: #29333f;
     display: flex;
     margin: 0 auto;
     flex-wrap: wrap;
@@ -9,23 +9,46 @@
 
 .cell {
     width: 25px;
-    height: 25px; 
+    height: 25px;
 }
+
 body {
     margin: 30px;
-    background-color:  #fbee6c ;
+    background-color: #fbee6c;
 }
 
 .snakeBody {
     width: 25px;
-    height: 25px;  
-    background-color:  green ;
+    height: 25px;
+    background-color: green;
     border-radius: 40%;
 }
 
 .apple {
     width: 25px;
-    height: 25px;  
-    background-color:  red ;
+    height: 25px;
+    background-color: red;
     border-radius: 50%;
+}
+
+.snakeHead {
+    width: 25px;
+    height: 25px;
+    background-color: yellowgreen;
+    border-radius: 40%;
+}
+
+#gameover {
+    display: none;
+    z-index: 20;
+    padding: 25px;
+    background-color: #fbee6c;
+    box-shadow: 0px 0px 3px black;
+    border-radius: 5px;
+    width: 350px;
+    top: 100px;
+    left: calc(50% - 175px);
+    position: absolute;
+    font-family: sans-serif;
+    color: #29333f;
 }
