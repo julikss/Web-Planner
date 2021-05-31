@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #29333f;
+}
+#main {
+    height: 640px;
+    width: 320px;
+    border: solid #c7c7c7;
+    position: absolute;
+    margin-left: 600px;
+    margin-top: 50px;
+}
