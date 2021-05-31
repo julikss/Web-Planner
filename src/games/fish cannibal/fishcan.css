@@ -13,7 +13,7 @@ body {
     background-color: #29333f;
 }
 
-canvas {
+#canvas {
     width: 1500px;
     height: 800px;
     background: url("./img/background.jpg");
@@ -22,22 +22,30 @@ canvas {
     border-radius: 20px;
 }
 
-button {
-    border-radius: 20px;
-    border: 2px solid rgb(255, 255, 255);
-    background-color: #fbee6c;
-    color: #ff0000;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 12px 45px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
+#game {
+    position: absolute;
+    top: 250px;
+    left: 720px;
+    margin: 20px;
+    height: 50px;
+    width: 350px;
+    background: rgba(65, 7, 7, 0.8);
     cursor: pointer;
+    border: 2px solid rgb(253, 0, 0);
+    border-radius: 20px;
     text-align: center;
-    justify-content: center;
 }
 
-button:active {
-    transform: scale(0.95);
+button {
+    margin: 10px;
+    background: none;
+    border: none;
+    color: rgb(253, 0, 0);
+    font-size: 25px;
+    font-family: bold sans-serif;
+    cursor: pointer;
+}
+
+button:hover {
+    color: #fbee6c;
 }
