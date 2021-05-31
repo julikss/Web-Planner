@@ -23,6 +23,48 @@ let  playfield = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
+let Figures = [T, E, Z, W, L, J, I];
+class CreateFigure {
+    FigureOne = [
+                    [0, T, 0],
+                    [T, T, T],
+                    [0, 0, 0]
+                ]
+    FigureTwo = [
+                    [0, E, E],
+                    [0, E, E],
+                    [0, 0, 0]
+                ]
+  FigureThree = [
+                    [Z, Z, 0],
+                    [0, Z, Z],
+                    [0, 0, 0]
+                ]
+  FigureFoure = [
+                    [0, W, W],
+                    [W, W, 0],
+                    [0, 0, 0]
+                ]
+   FigureFive = [
+                    [L, 0, 0],
+                    [L, 0, 0],
+                    [L, L, 0]
+                ]
+    FigureSix = [
+                    [0, 0, J],
+                    [0, 0, J],
+                    [0, J, J]
+                ]
+  FigureEight = [
+                    [0, I, 0],
+                    [0, I, 0],
+                    [0, I, 0]
+                ]
+    };
+const MaxCoundOfFigures = 7;
+function getRandomInt(MaxCoundOfFigures){
+    return Math.floor(Math.random() * MaxCoundOfFigures);
+    }
 let  activeFigure = {
 x: 0,
 y: 0,
@@ -183,7 +225,6 @@ moveFigureRight = () => {
         this.lockFigure();
     }
 }
-
 moveFigureDown = () => {
     this.activeFigure.y += 1;
     if (this.isConditionsForFigures()) {
@@ -197,7 +238,6 @@ rotateFigure = () => {
         this.activeFigure.rotationIndex = this.activeFigure.rotationIndex > 0 ? this.activeFigure.rotationIndex - 1 : 3;
     }
     return this.activeFigure.blocks;
-
 }
 isConditionsForFigures = () => {
     const blocks = this.activeFigure.blocks;
@@ -213,27 +253,23 @@ isConditionsForFigures = () => {
                 return false;
     }
 }
-
- lockFigure = () => {
+lockFigure = () => {
     const blocks = this.activeFigure.blocks;
     const {y: FigureY, x: figureX} = this.activeFogure;
     for (let y = 0; y < this.activeFigure.blocks.length; y++) {
         for (let x = 0; x < blocks[y].length; x++) {
             if (blocks[y][x] != 0){
             this.playfield[FigureY + y][figureX + x] = blocks[y][x];
+                }
             }
         }
     }
 }
-}
-
 
 const canvas = document.getElementById('canvas');
 this.canvas.width = this.width;
 this.canvas.height = this.height;
 this.context = this.canvas.getContext('2d');
-
-
 class View {
 constructor(elements, width, height, rows, columns) {
 this.elements = elements;
@@ -241,7 +277,6 @@ this.width = width;
 this.height = height;
 this.rows = rows;
 this.columns = columns;
-
 
 this.blockwidth = this.width / columns;
 this.blockheight = this.height / rows;
@@ -264,8 +299,7 @@ DrawPlayfield = (playfield) => {
                }
            }
        } 
-}
-
+    }
 }
 
 const main = document.querySelector('#main');
