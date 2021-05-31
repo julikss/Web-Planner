@@ -60,6 +60,8 @@ hideText.addEventListener("click", () => {
 function setImage() {
     const time = new Date().getHours();
 
-    if (time < 14) { document.body.style.backgroundImage = "url('back1.png')"; } else if (time < 19) { document.body.style.backgroundImage = "url('back2.png')"; } else { document.body.style.backgroundImage = "url('back3.png')"; }
+    if (time < 14) { document.body.style.backgroundImage = "url('./img/back1.png')"; }
+    else if (time < 19) { document.body.style.backgroundImage = "url('./img/back2.png')"; }
+    else { document.body.style.backgroundImage = "url('./img/back3.png')"; }
 }
 setImage();
