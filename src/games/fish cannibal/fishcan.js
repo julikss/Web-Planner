@@ -417,8 +417,8 @@ function gameOver() {
 function gameWin() {
     cancelAnimationFrame(animate);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'red';
-    ctx.font = 'bold 50px Arial';
+   ctx.fillStyle = '#410606';
+    ctx.font = 'bold 50px san-serif';
     ctx.fillText('GONGRATULATIONS!!!', canvas.width / 2 - 220, canvas.height / 2 - 350);
     ctx.fillText(`Your score: ${score}`, canvas.width / 2 - 200, canvas.height / 2 - 300);
     game.style.visibility = 'visible';
