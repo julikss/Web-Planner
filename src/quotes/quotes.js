@@ -1,18 +1,15 @@
 const hideText = document.getElementById("overlay");
 const getText = document.getElementById("help");
 const getQuotes = document.getElementById("getQuo");
+const fs = require("fs");
+const quo = require('./quotes.json');
+fs.readFile('./quotes.json', 'utf8', function (err, data) {
+    if (err) throw err; // we'll not consider error handling for now
+    const obj = JSON.parse(data);
+});
 
-function randomItem(quotes) {
-  return quotes[Math.floor(Math.random() * quotes.length)];
-}
-const quotes = ["Главное в жизни - это уметь думать. Попытайтесь пожалуйста",
-  "Прекрати бежать напрасно, друг мой, ты не обязан мечтать обо всём",
-  "Люди всегда видят лишь то, что хотят видеть",
-  "Не попади в ловушку чужой мечты",
-  "Я говорил, что мы выиграем. Хотя я не верил в это",
-  "Если головоломка не сложилась и тебе не подобрать пазлы, то начинай сначала"
-];
-
+const random = quo.quotes[Math.floor(Math.random() * quo.quotes.length)];
+  
 function getGreeting() {
   let greeting;
   const time = new Date().getHours();
@@ -21,7 +18,7 @@ function getGreeting() {
   else if (time < 18) greeting = "Good day";
   else greeting = "Good evening";
 
-  document.getElementById("gr").innerHTML = greeting + " " + randomItem(quotes);
+  document.getElementById("gr").innerHTML = greeting + " " + random;
 
   function createNotification() {
     const notif = document.createElement("div");

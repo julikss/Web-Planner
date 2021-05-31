@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/julikss/Web-Planner/issues"
   },
-  "homepage": "https://github.com/julikss/Web-Planner#readme"
+  "homepage": "https://github.com/julikss/Web-Planner#readme",
+  "dependencies": {
+    "express-generator": "^4.16.1"
+  }
 }
