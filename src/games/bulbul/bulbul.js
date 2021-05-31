@@ -8,7 +8,6 @@ canvas.height = window.innerHeight;
 let score = 0;
 let skip = 0;
 let gameFrame = 0;
-// let total = 0;
 let lives = 5;
 let allTotal = localStorage.getItem('allTotal');
 allTotal = JSON.parse(allTotal);
@@ -30,10 +29,6 @@ const mouse = {
 canvas.addEventListener('mousemove', function(event){
     mouse.x = event.x - canvasPosition.left;
     mouse.y = event.y - canvasPosition.top;
-});
-
-window.addEventListener('resize', function(){
-    canvasPosition = canvas.getBoundingClientRect();
 });
 
 //player
@@ -165,22 +160,17 @@ function handlyDangerfish(){
     dangerFish1.update();
 }
 
-
 //inscription on canvas
 function writeInCtx (){
     ctx.fillStyle = 'white';
-    // ctx.fillText('total:' + total, 20, 120);
     ctx.fillText(`lives: ${lives - skip}♥ ` , 20, 80);
     ctx.fillText('score:' + score, 20, 40);
 }
 
 function gameOver (){
-        // total += score;
         allTotal += Math.round(score/10);
         localStorage.setItem('allTotal', JSON.stringify(allTotal));
         document.getElementById('allTotal').value = allTotal;
-        // skip = 0;
-        // score = 0;
         bulArray.count = true;
         for (let i = 0; i < bulArray.length; i++){
             bulArray.splice(i);
@@ -206,7 +196,6 @@ function animation(){
     requestAnimationFrame(animation);
 }
 animation();
-// repeat.addEventListener('click', animation);
 repeat.addEventListener('click', function(){
     location.href = location.href;
 });
