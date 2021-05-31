@@ -8,7 +8,7 @@ const backgrs = document.querySelectorAll('.background');
 for (const backgr of backgrs) {
     const id = backgr.id;
     backgr.addEventListener('click', () => {
-        document.body.style.backgroundImage = `url('img/todolist/${id}.jpg')`;
+        document.body.style.backgroundImage = `url('/src/todolist/img/${id}.jpg')`;
     });
 } 
 
