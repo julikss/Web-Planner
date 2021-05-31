@@ -14,23 +14,36 @@ let currDay = null;
 let events = localStorage.getItem('events') ?
   JSON.parse(localStorage.getItem('events')) : [];
 
+let day;
+let month;
+let year;
+
+let daysAmount;
+let firstDay;
+let firstWeekday;
+let paddingdays;
+let displayedDays;
+let currDate;
+
+const getData = () => {
+  currDate = new Date();
+  day = currDate.getDate();
+  month = currDate.getMonth();
+  year = currDate.getFullYear();
+
+  daysAmount = 32 - new Date(year, month, 32).getDate();
+  firstDay = new Date(year, month, 1);
+  firstWeekday = weekdays[firstDay.getDay() - 1];
+  paddingdays = weekdays.indexOf(firstWeekday);
+  displayedDays = paddingdays + daysAmount;
+}
+
 const display = () => {
-
-  const currDate = new Date();
-
   if (currentMonth !== 0) {
     currDate.setMonth(new Date().getMonth() + currentMonth);
   }
 
-  const day = currDate.getDate();
-  const month = currDate.getMonth();
-  const year = currDate.getFullYear();
-
-  const daysAmount = 32 - new Date(year, month, 32).getDate();
-  const firstDay = new Date(year, month, 1);
-  const firstWeekday = weekdays[firstDay.getDay() - 1];
-  const paddingdays = weekdays.indexOf(firstWeekday);
-  const displayedDays = paddingdays + daysAmount;
+  getData();
 
   document.getElementById('monthButton')
     .innerText = `${months[month]} ${year}`;
