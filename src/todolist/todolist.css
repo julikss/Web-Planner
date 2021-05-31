@@ -1,160 +1,162 @@
 body {
-    background:#29333f;
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: rgb(255, 255, 255);
-    font-family: sans-serif;
+  background: #29333f;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  font-family: sans-serif;
 }
 
 .container {
-    display: block;
-    width: 800px;
-    margin: 100px auto 0;
-    padding: 20px 16px 30px;
+  display: block;
+  width: 800px;
+  margin: 100px auto 0;
+  padding: 20px 16px 30px;
 }
 
 ul {
-    margin: 5px 0;
-    padding: 0;
+  margin: 5px 0;
+  padding: 0;
 }
 
 li * {
-    float: left;
+  float: left;
 }
 
-li, h3 {
-    clear: both;
-    list-style: none;
+li,
+h3 {
+  clear: both;
+  list-style: none;
 }
 
-input, button {
-    outline: none;
+input,
+button {
+  outline: none;
 }
 
 button {
-    background: none;
-    border: 0px;
-    color: rgb(128, 128, 128);
-    font-size: 15px;
-    font-family: sans-serif;
-    cursor: pointer;
-    float: right;
-    margin: 8px auto;
-    border-radius: 10px;
+  background: none;
+  border: 0px;
+  color: rgb(128, 128, 128);
+  font-size: 15px;
+  font-family: sans-serif;
+  cursor: pointer;
+  float: right;
+  margin: 8px auto;
+  border-radius: 10px;
 }
 
 button:hover {
-    color:#fbee6c;
+  color: #fbee6c;
 }
 
 #add:hover {
-    border-radius: 15px;
-    border: 1px solid rgb(0, 0, 0);
+  border-radius: 15px;
+  border: 1px solid rgb(0, 0, 0);
 }
 
 #add {
-    float: right;
-    padding: 10px;
-    margin-top: 0;
-    border: 1px solid #ffffff;
+  float: right;
+  padding: 10px;
+  margin-top: 0;
+  border: 1px solid #ffffff;
 }
 
 h3 {
-    color: #fbec6c;
-    font-weight: bold;
-    font-size: 25px;
-    border-bottom: 2px solid black;
-    padding: 10px 0;
-    margin: 0 0 10px;
-    text-transform: uppercase;
+  color: #fbec6c;
+  font-weight: bold;
+  font-size: 25px;
+  border-bottom: 2px solid black;
+  padding: 10px 0;
+  margin: 0 0 10px;
+  text-transform: uppercase;
 }
 
 input[type="text"] {
-    margin: 1px 0;
-    font-size: 18px;
-    line-height: 18px;
-    height: 18px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    background: #fff;
-    border-radius: 6px;
-    font-family: sans-serif;
-    color: rgb(0, 0, 0);
+  margin: 1px 0;
+  font-size: 18px;
+  line-height: 18px;
+  height: 18px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  font-family: sans-serif;
+  color: rgb(0, 0, 0);
 }
 
 label[for='new-task'] {
-    display: block;
-    margin: 0 0 20px;
+  display: block;
+  margin: 0 0 20px;
 }
 
 input#new-task {
-    float: left;
-    width: 710px;
+  float: left;
+  width: 710px;
 }
 
 li {
-    overflow: hidden;
-    border-bottom: 1px solid #eee;
+  overflow: hidden;
+  border-bottom: 1px solid #eee;
 }
 
-li > input[type="checkbox"] {
-    margin: 0 10px;
-    position: relative;
-    top: 15px;
-    transform: scale(1.5);
+li>input[type="checkbox"] {
+  margin: 0 10px;
+  position: relative;
+  top: 15px;
+  transform: scale(1.5);
 }
 
-li > label {
-    font-size: 18px;
-    line-height: 40px;
-    width: 237px;
-    padding: 1px 0 0 11px
+li>label {
+  font-size: 18px;
+  line-height: 40px;
+  width: 237px;
+  padding: 1px 0 0 11px
 }
 
-li > input[type="text"] {
-    width: 620px;
+li>input[type="text"] {
+  width: 620px;
 }
 
-li > .delete:hover {
-    color: #CF2323;
+li>.delete:hover {
+  color: #CF2323;
 }
 
-#finished-tasks label, #finished-tasks button {
-    text-decoration: line-through;
-    color: lightgray;
+#finished-tasks label,
+#finished-tasks button {
+  text-decoration: line-through;
+  color: lightgray;
 }
 
 ul li input[type=text] {
-    display: none;
+  display: none;
 }
 
 ul li.editMode input[type=text] {
-    display: block;
+  display: block;
 }
 
 ul li.editMode label {
-    display: none;
+  display: none;
 }
 
 button.checkbox {
-    float: left;
+  float: left;
 }
 
 /* settings */
 
-#settings{
-    position: fixed;
-    right: 0px;
-    top: 0;
-    width: 150px;
-    background:#161c22; 
-    border: 2px solid #161c22;
-    text-align: center;
-    color: #fbec6c;
+#settings {
+  position: fixed;
+  right: 0px;
+  top: 0;
+  width: 150px;
+  background: #161c22;
+  border: 2px solid #161c22;
+  text-align: center;
+  color: #fbec6c;
 }
 
 .changeBgr img {
-    height: 100px;
-    cursor: pointer;
+  height: 100px;
+  cursor: pointer;
 }
-

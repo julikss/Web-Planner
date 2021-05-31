@@ -1,71 +1,71 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    height: 100vh;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: no-repeat url('./img/backgroundCanvas.jpg');
+  height: 100vh;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: no-repeat url('./img/backgroundCanvas.jpg');
 }
 
 #canvas1 {
-    /* width: 900px;
+  /* width: 900px;
     height: 600px; */
-    width: 100%;
-    height: 100%;
-    background:rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
 }
 
-#total { 
-    position: fixed;
-    width: 100px;
-    right: 0px;
-    top: 0px;
-    background:rgb(0, 0, 0, 0.3);
-    color: #fbee6c;
-    text-align: center;
+#total {
+  position: fixed;
+  width: 100px;
+  right: 0px;
+  top: 0px;
+  background: rgb(0, 0, 0, 0.3);
+  color: #fbee6c;
+  text-align: center;
 }
 
 input[type="text"] {
-    text-align: center;
-    margin: 1px 0;
-    font-size: 40px;
-    line-height: 18px;
-    height: 100px;
-    width: 100px;
-    padding: 3px;
-    border: 1px solid #ddd;
-    background: #fff;
-    border-radius: 6px;
-    font-family: sans-serif;
-    color: rgb(0, 0, 0);
+  text-align: center;
+  margin: 1px 0;
+  font-size: 40px;
+  line-height: 18px;
+  height: 100px;
+  width: 100px;
+  padding: 3px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  font-family: sans-serif;
+  color: rgb(0, 0, 0);
 }
 
 #gameOver {
-    position: absolute;
-    margin: 20px;
-    height: 70px;
-    width: 200px;
-    background:rgb(0, 0, 0, 0.8);
-    color: white;
-    text-align: center;
-    cursor: pointer;  
+  position: absolute;
+  margin: 20px;
+  height: 70px;
+  width: 200px;
+  background: rgb(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+  cursor: pointer;
 }
 
 button {
-    background: none;
-    border:none;
-    color: rgb(255, 255, 255);
-    font-size: 30px;
-    font-family: sans-serif;  
-    cursor: pointer;  
+  background: none;
+  border: none;
+  color: rgb(255, 255, 255);
+  font-size: 30px;
+  font-family: sans-serif;
+  cursor: pointer;
 }
 
 button:hover {
-    color:#fbee6c;
+  color: #fbee6c;
 }

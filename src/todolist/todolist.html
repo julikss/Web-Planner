@@ -2,62 +2,61 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="todolist.css">
-    <link rel="stylesheet" href="../styles/bar.css">
-    <title>Todolist</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="todolist.css">
+  <link rel="stylesheet" href="../styles/bar.css">
+  <title>Todolist</title>
 </head>
 
 <body>
+  <nav class="menu">
+    <a href="../mainpage.html" class="menu__item menu__item--active" data-tooltip="Home">
+      <i class="fa fa-home"></i>
+    </a>
+    <a href="../calendar planner/calendar.html" class="menu__item" data-tooltip="Calendar">
+      <i class="far fa-calendar-alt"></i>
+    </a>
+    <a href="../quotes/quotes.html" class="menu__item" data-tooltip="Quotes">
+      <i class="fas fa-square"></i>
+    </a>
+    <a href="https://github.com/julikss/Web-Planner" class="menu__item" data-tooltip="Our GitHub">
+      <i class="fa fa-code"></i>
+    </a>
+  </nav>
 
-    <nav class="menu">
-        <a href="../mainpage.html" class="menu__item menu__item--active" data-tooltip="Home">
-            <i class="fa fa-home"></i>
-        </a>
-        <a href="../calendar planner/calendar.html" class="menu__item" data-tooltip="Calendar">
-            <i class="far fa-calendar-alt"></i>
-        </a>
-        <a href="../quotes/quotes.html" class="menu__item" data-tooltip="Quotes">
-            <i class="fas fa-square"></i>
-        </a>
-        <a href="https://github.com/julikss/Web-Planner" class="menu__item" data-tooltip="Our GitHub">
-            <i class="fa fa-code"></i>
-        </a>
-    </nav>
-
-    <div id="settings">
-        <h4>BACKGROUND</h4>
-        <div class="changeBgr">
-            <img id="bgrNone" class="background" src="/src/todolist/img/bgrNone.jpg" />
-            <img id="bgr1" class="background" src="/src/todolist/img/bgr1.jpg" />
-            <img id="bgr2" class="background" src="/src/todolist/img/bgr2.jpg" />
-            <img id="bgr3" class="background" src="/src/todolist/img/bgr3.jpg" />
-        </div>
+  <div id="settings">
+    <h4>BACKGROUND</h4>
+    <div class="changeBgr">
+      <img id="bgrNone" class="background" src="/src/todolist/img/bgrNone.jpg" />
+      <img id="bgr1" class="background" src="/src/todolist/img/bgr1.jpg" />
+      <img id="bgr2" class="background" src="/src/todolist/img/bgr2.jpg" />
+      <img id="bgr3" class="background" src="/src/todolist/img/bgr3.jpg" />
     </div>
+  </div>
 
-    <div id="root">
-        <div class="container">
-            <h3>Add...</h3>
-            <input id="new-task" type="text" placeholder="Add a task">
-            <button id="add">ADD</button>
-            <h3>NOT COMPLETED</h3>
-            <ul id="unfinished-tasks">
+  <div id="root">
+    <div class="container">
+      <h3>Add...</h3>
+      <input id="new-task" type="text" placeholder="Add a task">
+      <button id="add">ADD</button>
+      <h3>NOT COMPLETED</h3>
+      <ul id="unfinished-tasks">
 
-            </ul>
+      </ul>
 
-            <h3>COMPLETED</h3>
-            <ul id="finished-tasks">
+      <h3>COMPLETED</h3>
+      <ul id="finished-tasks">
 
-            </ul>
-        </div>
-
+      </ul>
     </div>
+  </div>
 
-    <script src="./todolist.js"></script>
+  <script src="./todolist.js"></script>
 </body>
 
 </html>
