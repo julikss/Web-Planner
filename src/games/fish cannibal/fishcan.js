@@ -4,7 +4,6 @@ const game = document.querySelector('#game');
 canvas.width = document.body.clientWidth;
 canvas.height = document.body.clientHeight;
 
-let count = canvas.height;
 let bubbles = [];
 let bubbleCount = 20;
 let bubbleSpeed = 1;
@@ -26,10 +25,7 @@ const danger = [];
 
 document.addEventListener('keydown', move);
 document.addEventListener('keyup', () => dir = 'still');
-game.addEventListener('click', function() {
-    location.href = location.href;
-
-});
+game.addEventListener('click', () => location.reload());
 
 function move(event) {
     if (event.keyCode == 37) {
@@ -417,7 +413,7 @@ function gameOver() {
 function gameWin() {
     cancelAnimationFrame(animate);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-   ctx.fillStyle = '#410606';
+    ctx.fillStyle = '#410606';
     ctx.font = 'bold 50px san-serif';
     ctx.fillText('GONGRATULATIONS!!!', canvas.width / 2 - 220, canvas.height / 2 - 350);
     ctx.fillText(`Your score: ${score}`, canvas.width / 2 - 200, canvas.height / 2 - 300);
