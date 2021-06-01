@@ -25,7 +25,7 @@ const danger = [];
 
 document.addEventListener('keydown', move);
 document.addEventListener('keyup', () => dir = 'still');
-game.addEventListener('click', () => { location.reload(); });
+game.addEventListener('click', () => location.reload());
 
 function move(event) {
   if (event.keyCode === 37) {
@@ -64,7 +64,10 @@ function generateDir(dir) {
 
 class Edible {
   constructor(img) {
-    this.pos = { x: Math.random() * canvas.width, y: Math.random() * canvas.height };
+    this.pos = {
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height
+    };
     this.width = 120;
     this.height = 80;
     this.img = img;
@@ -74,10 +77,14 @@ class Edible {
   }
 
   EndCoord() {
-    if (this.dir === 'right') { return this.xEnd = Math.random() * (canvas.width - this.width - this.pos.x) + this.pos.x; }
-    if (this.dir === 'left') { return this.xEnd = Math.random() * this.pos.x; }
-    if (this.dir === 'up') { return this.yEnd = Math.random() * this.pos.y; }
-    if (this.dir === 'down') { return this.yEnd = Math.random() * (canvas.height - this.height - this.pos.y) + this.pos.y; }
+    if (this.dir === 'right')
+      return this.xEnd = Math.random() * (canvas.width - this.width - this.pos.x) + this.pos.x;
+    if (this.dir === 'left')
+      return this.xEnd = Math.random() * this.pos.x;
+    if (this.dir === 'up')
+      return this.yEnd = Math.random() * this.pos.y;
+    if (this.dir === 'down')
+      return this.yEnd = Math.random() * (canvas.height - this.height - this.pos.y) + this.pos.y;
   }
 
   draw() {
@@ -223,10 +230,14 @@ class Shark {
   }
 
   EndCoord() {
-    if (this.dir === 'right') { return this.xEnd = Math.random() * (canvas.width - this.width - this.x) + this.x; }
-    if (this.dir === 'left') { return this.xEnd = Math.random() * this.x; }
-    if (this.dir === 'up') { return this.yEnd = Math.random() * this.y; }
-    if (this.dir === 'down') { return this.yEnd = Math.random() * (canvas.height - this.height - this.y) + this.y; }
+    if (this.dir === 'right')
+      return this.xEnd = Math.random() * (canvas.width - this.width - this.x) + this.x;
+    if (this.dir === 'left')
+      return this.xEnd = Math.random() * this.x;
+    if (this.dir === 'up')
+      return this.yEnd = Math.random() * this.y;
+    if (this.dir === 'down')
+      return this.yEnd = Math.random() * (canvas.height - this.height - this.y) + this.y;
   }
 
   render() {
@@ -271,38 +282,44 @@ class Bubble {
   constructor() {
     this.pos = { x: 0, y: 0 };
     this.radius = 10 + Math.random() * 10;
-    this.endPos = { x: Math.random() * canvas.width - this.radius, y: Math.random() * canvas.height };
+    this.endPos = {
+      x: Math.random() * canvas.width - this.radius,
+      y: Math.random() * canvas.height
+    };
     this.distance = 50 + Math.random() * 40;
     this.count = canvas.height + this.endPos.y;
-    this.maxRotation = 85;
-    this.minRotation = this.maxRotation * -1;
-    this.rotation = Math.floor(Math.random() * (this.maxRotation - this.minRotation)) + this.minRotation;
-    this.rotationDir = 'forward';
+    this.maxRotate = 85;
+    this.minRotate = this.maxRotate * -1;
+    this.rotate = Math.floor(Math.random() * (this.maxRotate - this.minRotate)) + this.minRotate;
+    this.rotateDir = 'forward';
   }
 
   resetPos() {
     this.pos = { x: 0, y: 0 };
     this.radius = 10 + Math.random() * 10;
-    this.endPos = { x: Math.random() * canvas.width - this.radius, y: Math.random() * canvas.height };
+    this.endPos = {
+      x: Math.random() * canvas.width - this.radius,
+      y: Math.random() * canvas.height
+    };
     this.distance = 50 + Math.random() * 40;
     this.count = canvas.height + this.endPos.y;
   }
 
   render() {
-    if (this.rotationDir === 'forward') {
-      if (this.rotation < this.maxRotation) {
-        this.rotation++;
+    if (this.rotateDir === 'forward') {
+      if (this.rotate < this.maxRotate) {
+        this.rotate++;
       } else {
-        this.rotationDir = 'backward';
+        this.rotateDir = 'backward';
       }
-    } else if (this.rotation > this.minRotation) {
-      this.rotation--;
+    } else if (this.rotate > this.minRotate) {
+      this.rotate--;
     } else {
-      this.rotationDir = 'forward';
+      this.rotateDir = 'forward';
     }
     ctx.save();
     ctx.translate(this.pos.x, this.pos.y);
-    ctx.rotate(this.rotation * Math.PI / 180);
+    ctx.rotate(this.rotate * Math.PI / 180);
     ctx.beginPath();
     ctx.strokeStyle = 'white';
     ctx.arc(0, 0, this.radius - 3, 0, Math.PI * 1.5, true);
@@ -323,7 +340,7 @@ function drawBonusFish() {
   bonusFish.EndCoord();
   bonusFish.draw();
   bonusFish.move();
-  if (collision(bonusFish.pos.x, bonusFish.pos.y, bonusFish.width, bonusFish.height)) {
+  if (collide(bonusFish.pos.x, bonusFish.pos.y, bonusFish.width, bonusFish.height)) {
     bonusFish.remove();
     if (lives <= 2) lives++;
     else score++;
@@ -334,7 +351,7 @@ function drawDanger() {
   for (let i = 0; i < danger.length; i++) {
     danger[i].draw();
     danger[i].move();
-    if (collision(danger[i].pos.x, danger[i].pos.y, danger[i].width, danger[i].height)) {
+    if (collide(danger[i].pos.x, danger[i].pos.y, danger[i].width, danger[i].height)) {
       player.makeSmaller();
       danger[i].remove();
       lives--;
@@ -347,7 +364,7 @@ function drawEdible() {
     edible[i].EndCoord();
     edible[i].draw();
     edible[i].move();
-    if (collision(edible[i].pos.x, edible[i].pos.y, edible[i].width, edible[i].height)) {
+    if (collide(edible[i].pos.x, edible[i].pos.y, edible[i].width, edible[i].height)) {
       if (player.width <= shark.width && player.height <= shark.height) {
         player.makeBigger();
         edible[i].remove();
@@ -363,7 +380,9 @@ function drawBubbles() {
     bubbles[i].pos.y = bubbles[i].count;
     bubbles[i].render();
 
-    if (bubbles[i].count < 0 - bubbles[i].radius) { bubbles[i].count = canvas.height + bubbles[i].endPos.y; } else { bubbles[i].count -= bubbleSpeed; }
+    if (bubbles[i].count < 0 - bubbles[i].radius)
+      bubbles[i].count = canvas.height + bubbles[i].endPos.y;
+    else bubbles[i].count -= bubbleSpeed;
   }
 }
 
@@ -391,7 +410,7 @@ function gameOver() {
     cancelAnimationFrame(animate);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(loser, canvas.width / 2 - 250, canvas.height / 2 - 200, 500, 500);
-    ctx.fillText('GAME OVER!!!', canvas.width / 2 - 200, canvas.height / 2 - 350);
+    ctx.fillText('GAME OVER!', canvas.width / 2 - 200, canvas.height / 2 - 350);
     ctx.fillText(`Your score: ${score}`, canvas.width / 2 - 200, canvas.height / 2 - 300);
     game.style.visibility = 'visible';
   }
@@ -402,19 +421,19 @@ function gameWin() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = '#410606';
   ctx.font = 'bold 50px san-serif';
-  ctx.fillText('GONGRATULATIONS!!!', canvas.width / 2 - 220, canvas.height / 2 - 350);
+  ctx.fillText('GONGRATULATIONS!', canvas.width / 2 - 220, canvas.height / 2 - 350);
   ctx.fillText(`Your score: ${score}`, canvas.width / 2 - 200, canvas.height / 2 - 300);
   game.style.visibility = 'visible';
 }
 
-function collision(x, y, width, height) {
-  let collisionX = false;
-  let collisionY = false;
-  if ((x >= player.x) && (x <= player.x + player.width)) collisionX = true;
-  if ((player.x >= x) && (player.x <= x + width)) collisionX = true;
-  if ((y >= player.y) && (y <= player.y + player.height)) collisionY = true;
-  if ((player.y >= y) && (player.y <= y + height)) collisionY = true;
-  if (collisionX && collisionY) return true;
+function collide(x, y, width, height) {
+  let collideX = false;
+  let collideY = false;
+  if ((x >= player.x) && (x <= player.x + player.width)) collideX = true;
+  if ((player.x >= x) && (player.x <= x + width)) collideX = true;
+  if ((y >= player.y) && (y <= player.y + player.height)) collideY = true;
+  if ((player.y >= y) && (player.y <= y + height)) collideY = true;
+  if (collideX && collideY) return true;
   else return false;
 }
 
@@ -429,7 +448,7 @@ function animate() {
   shark.EndCoord();
   shark.render();
 
-  if (collision(shark.x, shark.y, shark.width, shark.height)) {
+  if (collide(shark.x, shark.y, shark.width, shark.height)) {
     if (player.width === shark.width && player.height === shark.height) {
       shark.remove();
       gameWin();
