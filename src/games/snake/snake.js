@@ -127,12 +127,17 @@ class Snake {
         this.moveSnake();
         if (snakeObjects[0].classList.contains('snakeBody')) {
             console.log('game over');
-            //document.getElementById('gameover').style.display = 'block';
+            document.getElementById('end').style.display = 'block';
             snakeObjects[0].classList.remove('snakeHead');
             for (let el = 1; el < snakeObjects.length; el++) {
                 snakeObjects[el].classList.remove('snakeBody');
             }
             snakeObjects.splice(0, snakeObjects.length);
+            document.getElementById('restart').innerText = 'Restart';
+            document.getElementById('restart').addEventListener('click',
+                () => {
+                    document.getElementById('end').style.display = 'none';
+                });
             this.initializeSnake();
         }
     }
@@ -143,7 +148,7 @@ snake.initializeSnake();
 snake.endGame();
 //snake.moveSnake();
 
-window.addEventListener('keydown', (x) => {
+document.addEventListener('keydown', (x) => {
     if (x.keyCode == 37 && direct != 'right') {
         direct = 'left';
         snake.endGame();
