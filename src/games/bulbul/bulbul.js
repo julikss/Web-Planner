@@ -1,4 +1,4 @@
-//canvas
+// canvas
 const canvas = document.querySelector('#canvas1');
 const ctx = canvas.getContext('2d');
 const repeat = document.querySelector('#gameOver');
@@ -14,24 +14,24 @@ allTotal = JSON.parse(allTotal);
 document.getElementById('allTotal').value = allTotal;
 ctx.font = '30px arial';
 
-//sound
+// sound
 const bulMusic = document.createElement('audio');
 bulMusic.src = './sound/soundBul.mp3';
 const gameOverMusic = document.createElement('audio');
 gameOverMusic.src = './sound/gameover.mp3';
 
-//mouse
-let canvasPosition = canvas.getBoundingClientRect();
+// mouse
+const canvasPosition = canvas.getBoundingClientRect();
 const mouse = {
   x: canvas.width / 2,
-  y: canvas.height / 2,
+  y: canvas.height / 2
 };
-canvas.addEventListener('mousemove', function (event) {
+canvas.addEventListener('mousemove', event => {
   mouse.x = event.x - canvasPosition.left;
   mouse.y = event.y - canvasPosition.top;
 });
 
-//player
+// player
 const imgPlayer = new Image();
 imgPlayer.src = './img/player.png';
 class Player {
@@ -40,6 +40,7 @@ class Player {
     this.y = canvas.height / 2;
     this.radius = 60;
   }
+
   update() {
     const dx = this.x - mouse.x;
     const dy = this.y - mouse.y;
@@ -50,6 +51,7 @@ class Player {
       this.y -= dy / 15;
     }
   }
+
   draw() {
     if (mouse.move) {
       ctx.lineWidth = 0.1;
@@ -69,7 +71,7 @@ class Player {
 }
 const player = new Player();
 
-//small bulbul
+// small bulbul
 const bulArray = [];
 const imgBul = new Image();
 imgBul.src = './img/bul.png';
@@ -83,12 +85,14 @@ class Bul {
     this.count = false;
     this.sound = 'sound';
   }
+
   update() {
     this.y -= this.speed;
     const dx = this.x - player.x;
     const dy = this.y - player.y;
     this.distance = Math.sqrt(dx * dx + dy * dy);
   }
+
   draw() {
     ctx.fillStyle = '#161c22';
     ctx.beginPath();
@@ -122,7 +126,7 @@ function handlyBul() {
   }
 }
 
-//danger fish
+// danger fish
 const dangerFishImage = new Image();
 dangerFishImage.src = './img/dangerFish.png';
 class DangerFish {
@@ -132,6 +136,7 @@ class DangerFish {
     this.radius = 50;
     this.speed = Math.random() * 2 + 2;
   }
+
   draw() {
     ctx.fillStyle = 'black';
     ctx.beginPath();
@@ -139,6 +144,7 @@ class DangerFish {
     ctx.fill();
     ctx.drawImage(dangerFishImage, this.x - 130, this.y - 130, 200, 200);
   }
+
   update() {
     this.x += this.speed;
     if (this.x > canvas.width - this.radius * 2) {
@@ -161,7 +167,7 @@ function handlyDangerfish() {
   dangerFish1.update();
 }
 
-//inscription on canvas
+// inscription on canvas
 function writeInCtx() {
   ctx.fillStyle = 'white';
   ctx.fillText(`lives: ${lives - skip}♥ `, 20, 80);
@@ -180,7 +186,7 @@ function gameOver() {
   gameOverMusic.play();
 }
 
-//animation
+// animation
 function animation() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   repeat.style.visibility = 'hidden';
@@ -197,6 +203,6 @@ function animation() {
   requestAnimationFrame(animation);
 }
 animation();
-repeat.addEventListener('click', function () {
+repeat.addEventListener('click', () => {
   location.href = location.href;
 });

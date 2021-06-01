@@ -3,7 +3,7 @@ const inputTask = document.getElementById('new-task');
 const unfinishedTasks = document.getElementById('unfinished-tasks');
 const finishedTasks = document.getElementById('finished-tasks');
 
-//change background
+// change background
 const backgrs = document.querySelectorAll('.background');
 for (const backgr of backgrs) {
   const id = backgr.id;
@@ -17,23 +17,23 @@ function createNewElement(task, finished) {
   const checkbox = document.createElement('button');
 
   if (finished) {
-    checkbox.className = "checkbox";
-    checkbox.innerHTML = "<i class='icons'>cancel</i>";
+    checkbox.className = 'checkbox';
+    checkbox.innerHTML = '<i class=\'icons\'>cancel</i>';
   } else {
-    checkbox.className = "checkbox";
-    checkbox.innerHTML = "<i class='icons'>✔done</i>";
+    checkbox.className = 'checkbox';
+    checkbox.innerHTML = '<i class=\'icons\'>✔done</i>';
   }
 
   const label = document.createElement('label');
   label.innerText = task;
   const input = document.createElement('input');
-  input.type = "text";
+  input.type = 'text';
   const editButton = document.createElement('button');
-  editButton.className = "edit";
-  editButton.innerHTML = "<i class='icons'>edit</i>";
+  editButton.className = 'edit';
+  editButton.innerHTML = '<i class=\'icons\'>edit</i>';
   const deleteButton = document.createElement('button');
-  deleteButton.className = "delete";
-  deleteButton.innerHTML = "<i class='icons'>delete</i>";
+  deleteButton.className = 'delete';
+  deleteButton.innerHTML = '<i class=\'icons\'>delete</i>';
 
   const appendChild = [checkbox, label, input, deleteButton, editButton];
   for (let i = 0; i < appendChild.length; i++) {
@@ -48,7 +48,7 @@ function addTask() {
     const listItem = createNewElement(inputTask.value, false);
     unfinishedTasks.appendChild(listItem);
     bindTaskEvents(listItem, finishTask);
-    inputTask.value = "";
+    inputTask.value = '';
   }
   save();
 }
@@ -84,8 +84,8 @@ function editTask() {
 function finishTask() {
   const listItem = this.parentNode;
   const checkbox = listItem.querySelector('button.checkbox');
-  checkbox.className = "checkbox";
-  checkbox.innerHTML = "<i class='icons'>cancel</i>";
+  checkbox.className = 'checkbox';
+  checkbox.innerHTML = '<i class=\'icons\'>cancel</i>';
   finishedTasks.appendChild(listItem);
   bindTaskEvents(listItem, unfinishTask);
   save();
@@ -94,8 +94,8 @@ function finishTask() {
 function unfinishTask() {
   const listItem = this.parentNode;
   const checkbox = listItem.querySelector('button.checkbox');
-  checkbox.className = "checkbox";
-  checkbox.innerHTML = "<i class='icons'>✔done</i>";
+  checkbox.className = 'checkbox';
+  checkbox.innerHTML = '<i class=\'icons\'>✔done</i>';
 
   unfinishedTasks.appendChild(listItem);
   bindTaskEvents(listItem, finishTask);
@@ -110,7 +110,6 @@ function bindTaskEvents(listItem, checkboxEvent) {
   checkbox.onclick = checkboxEvent;
   editButton.onclick = editTask;
   deleteButton.onclick = deleteTask;
-
 }
 
 function save() {
