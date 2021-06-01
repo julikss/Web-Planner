@@ -22,12 +22,15 @@ const day3 = [
   'Only I can change my life. No one can do it for me.',
   'Die with memories, not dreams.'
 ];
+const days = [day1, day2, day3];
 
 function week() {
   const n = new Date().getDay();
-
-  const random = `day${n}`[Math.floor(Math.random() * `day${n}`.length)];// doesnt wotk returned undefine
+  const currDay = days[n - 1];
+  const random = currDay[Math.floor(Math.random() * currDay.length)];
+  return random;
 }
+
 function getGreeting() {
   let greeting;
   const time = new Date().getHours();
@@ -45,6 +48,7 @@ function getGreeting() {
     container.appendChild(notif);
   }
 }
+
 function lockoutSubmit(button) {
   const oldValue = button.value;
 

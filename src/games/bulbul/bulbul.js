@@ -26,7 +26,7 @@ const mouse = {
   x: canvas.width / 2,
   y: canvas.height / 2
 };
-canvas.addEventListener('mousemove', event => {
+canvas.addEventListener('mousemove', (event) => {
   mouse.x = event.x - canvasPosition.left;
   mouse.y = event.y - canvasPosition.top;
 });

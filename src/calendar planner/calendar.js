@@ -10,12 +10,26 @@ const months = ['January', 'February', 'March', 'April', 'May', 'June',
 const newEvent = document.getElementById('newEvent');
 const modalBackDrop = document.getElementById('modalBackDrop');
 const eventInput = document.getElementById('eventInput');
+const correctEvent = document.getElementById('correctEvent');
 
 let currentMonth = 0;
 let currDay = null;
 let events = localStorage.getItem('events') ?
-  JSON.parse(localStorage.getItem('events')) :
-  [];
+  JSON.parse(localStorage.getItem('events')) : [];
+
+const addEvent = (date) => {
+  currDay = date;
+  const currentEvent = events.find((x) => x.date === currDay);
+
+  if (currentEvent) {
+    correctEvent.style.display = 'block';
+    modalBackDrop.style.display = 'block';
+    document.getElementById('eventText').innerText = currentEvent.event;
+  } else {
+    newEvent.style.display = 'block';
+    modalBackDrop.style.display = 'block';
+  }
+};
 
 const display = () => {
   const currDate = new Date();
@@ -41,13 +55,13 @@ const display = () => {
   for (let i = 1; i <= displayedDays; i++) {
     const daySquare = document.createElement('div');
     daySquare.classList.add('day');
-    if (i == day + paddingdays && currentMonth == 0) {
+    if (i === day + paddingdays && currentMonth === 0) {
       daySquare.classList.add('highlight');
     }
     if (i > paddingdays) {
       daySquare.innerText = i - paddingdays;
 
-      const currentEvent = events.find(x =>
+      const currentEvent = events.find((x) =>
         x.date === `${month + 1}/${i - paddingdays}/${year}`);
 
       if (currentEvent) {
@@ -82,19 +96,6 @@ const pressButton = () => {
     });
 };
 
-const addEvent = date => {
-  currDay = date;
-  const currentEvent = events.find(x => x.date === currDay);
-
-  if (currentEvent) {
-    correctEvent.style.display = 'block';
-    modalBackDrop.style.display = 'block';
-    document.getElementById('eventText').innerText = currentEvent.event;
-  } else {
-    newEvent.style.display = 'block';
-    modalBackDrop.style.display = 'block';
-  }
-};
 const closeWindow = () => {
   eventInput.value = '';
   newEvent.style.display = 'none';
@@ -142,7 +143,7 @@ const deleteWindow = () => {
 };
 
 const deleteEvent = () => {
-  events = events.filter(x => x.date != currDay);
+  events = events.filter((x) => x.date !== currDay);
   deleteWindow();
 };
 

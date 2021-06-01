@@ -29,7 +29,7 @@ for (let i = 0; i < blocksAmount; i++) {
 const block = document.getElementsByClassName('cell');
 const makingCells = () => {
   for (let j = 0; j < blocksAmount; j++) {
-    if (initCoords.x == 26) {
+    if (initCoords.x === 26) {
       initCoords.x = 1;
       initCoords.y--;
     }
@@ -94,8 +94,8 @@ class Snake {
   }
 
   eatApple() {
-    if (snakeObjects[0].getAttribute('x') == apple.getAttribute('x') &&
-            snakeObjects[0].getAttribute('y') == apple.getAttribute('y')) {
+    if (snakeObjects[0].getAttribute('x') === apple.getAttribute('x') &&
+            snakeObjects[0].getAttribute('y') === apple.getAttribute('y')) {
       apple.classList.remove('apple');
       snakeObjects.push(document.querySelector('[x = "' +
                 snakeObjects[snakeObjects.length - 1]
@@ -114,23 +114,23 @@ class Snake {
       snakeObjects[0].getAttribute('y')
     ];
     this.removeClass();
-    if (direct == 'right') {
-      if (headCoords[0] == 25) headCoords[0] = 0;
+    if (direct === 'right') {
+      if (headCoords[0] === 25) headCoords[0] = 0;
       snakeObjects.unshift(document.querySelector('[x = "' +
                 (+headCoords[0] + 1) + '"][y = "' + (headCoords[1]) + '"]'));
     }
-    if (direct == 'left') {
-      if (headCoords[0] == 1) headCoords[0] = 26;
+    if (direct === 'left') {
+      if (headCoords[0] === 1) headCoords[0] = 26;
       snakeObjects.unshift(document.querySelector('[x = "' +
                 (+headCoords[0] - 1) + '"][y = "' + (headCoords[1]) + '"]'));
     }
-    if (direct == 'down') {
-      if (headCoords[1] == 1) headCoords[1] = 26;
+    if (direct === 'down') {
+      if (headCoords[1] === 1) headCoords[1] = 26;
       snakeObjects.unshift(document.querySelector('[x = "' +
                 (headCoords[0]) + '"][y = "' + (+headCoords[1] - 1) + '"]'));
     }
-    if (direct == 'up') {
-      if (headCoords[1] == 25) headCoords[1] = 0;
+    if (direct === 'up') {
+      if (headCoords[1] === 25) headCoords[1] = 0;
       snakeObjects.unshift(document.querySelector('[x = "' +
                 (headCoords[0]) + '"][y = "' + (+headCoords[1] + 1) + '"]'));
     }
@@ -163,17 +163,17 @@ const snake = new Snake(snakeParametres.snakeX, snakeParametres.snakeY);
 
 snake.initializeSnake();
 
-document.addEventListener('keydown', x => {
-  if (x.keyCode == 37 && direct != 'right') {
+document.addEventListener('keydown', (x) => {
+  if (x.keyCode === 37 && direct !== 'right') {
     direct = 'left';
     snake.endGame();
-  } else if (x.keyCode == 38 && direct != 'down') {
+  } else if (x.keyCode === 38 && direct !== 'down') {
     direct = 'up';
     snake.endGame();
-  } else if (x.keyCode == 39 && direct != 'left') {
+  } else if (x.keyCode === 39 && direct !== 'left') {
     direct = 'right';
     snake.endGame();
-  } else if (x.keyCode == 40 && direct != 'up') {
+  } else if (x.keyCode === 40 && direct !== 'up') {
     direct = 'down';
     snake.endGame();
   }
