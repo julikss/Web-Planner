@@ -71,13 +71,6 @@ function getGreeting() {
   else greeting = 'Good evening';
 
   document.getElementById('gr').innerHTML = greeting + ' ' + week();
-
-  function createNotification() {
-    const notif = document.createElement('div');
-    notif.innerText = greeting + ' ' + week();
-
-    container.appendChild(notif);
-  }
 }
 
 function lockoutSubmit(button) {
@@ -94,7 +87,6 @@ function lockoutSubmit(button) {
 getQuotes.addEventListener('click', () => {
   week();
   getGreeting();
-  createNotification();
   lockoutSubmit(button);
 });
 
