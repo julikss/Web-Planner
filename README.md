@@ -18,9 +18,9 @@ To move a player in particular direction press arrow keys Right, Left, Up and Do
 Created by Julia Lehenka
 
 ### BulBul Game
-description
+Bul-bul. An interesting anti-stress game. Control the fish that will burst the balls. But beware! There are dangerous fish in the sea that can eat you.
 #### How to play 
-description
+To move the fish just move the mouse. Every time your fish do 'bul', you will get points for them.  And there will be a 'bull-bull' :3
 
 Created by Kvasova Liubov
 
