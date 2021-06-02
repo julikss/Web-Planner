@@ -25,9 +25,9 @@ description
 Created by Kvasova Liubov
 
 ### Snake
-description
+The player controls a long, thin creature, resembling a snake, which roams around on a bordered plane, picking up food (or some other item), trying to avoid hitting its own tail.
 #### How to play 
-description
+In order to move your snake in different directions just press arrow keys. Every time your snake eats apples, you will get points for them. 
 
 Created by Sanina Anastasia
 
