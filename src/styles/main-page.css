@@ -54,10 +54,7 @@ button:hover {
     background: linear-gradient( #c7c7c7, #fdff90, #db98db);
 }
 
-.card1,
-.card2,
-.card3,
-.card4 {
+.card {
     margin-top: 0px;
     background-color: rgba(41, 51, 63, 0.9);
     height: 37rem;
@@ -72,10 +69,7 @@ button:hover {
     border-radius: 20px;
 }
 
-.card1,
-.card2,
-.card3,
-.card4 :focus {
+.card:focus {
     outline: 2px dotted #55d7dc;
 }
 
