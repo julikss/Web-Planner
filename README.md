@@ -15,8 +15,35 @@ Living conditions in the polluted water are becoming unbearable for harmless fis
 #### How to play 
 To move a player in particular direction press arrow keys Right, Left, Up and Down. When you have left only one life, a bonus fish will appear - by eating it you can gain additional life. If you hit the shark before becoming bigger than it - you lose the game.
 
-Created by @julikss
+Created by Julia Lehenka
 
+### BulBul Game
+description
+#### How to play 
+description
+
+Created by Kvasova Liubov
+
+### Snake
+description
+#### How to play 
+description
+
+Created by Sanina Anastasia
+
+### Evil Forest
+description
+#### How to play 
+description
+
+Created by Marina Vasylieva
+
+### Tetris
+description
+#### How to play 
+description
+
+Created by Anastasia Fartushnyak
 
 
 
