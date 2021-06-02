@@ -26,7 +26,7 @@ const mouse = {
   x: canvas.width / 2,
   y: canvas.height / 2
 };
-canvas.addEventListener('mousemove', (event) => {
+canvas.addEventListener('mousemove', event => {
   mouse.x = event.x - canvasPosition.left;
   mouse.y = event.y - canvasPosition.top;
 });
@@ -44,10 +44,10 @@ class Player {
   update() {
     const dx = this.x - mouse.x;
     const dy = this.y - mouse.y;
-    if (mouse.x != this.x) {
+    if (mouse.x !== this.x) {
       this.x -= dx / 15;
     }
-    if (mouse.y != this.y) {
+    if (mouse.y !== this.y) {
       this.y -= dy / 15;
     }
   }
@@ -105,7 +105,7 @@ class Bul {
 }
 
 function handlyBul() {
-  if (gameFrame % 50 == 0) {
+  if (gameFrame % 50 === 0) {
     bulArray.push(new Bul());
   }
   for (let i = 0; i < bulArray.length; i++) {
@@ -195,7 +195,7 @@ function animation() {
   player.update();
   player.draw();
   writeInCtx();
-  if (skip == lives) {
+  if (skip === lives) {
     gameOver();
     return;
   }
@@ -204,5 +204,5 @@ function animation() {
 }
 animation();
 repeat.addEventListener('click', () => {
-  location.href = location.href;
+  location.reload();
 });

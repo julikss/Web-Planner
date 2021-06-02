@@ -163,7 +163,7 @@ const snake = new Snake(snakeParametres.snakeX, snakeParametres.snakeY);
 
 snake.initializeSnake();
 
-document.addEventListener('keydown', (x) => {
+document.addEventListener('keydown', x => {
   if (x.keyCode === 37 && direct !== 'right') {
     direct = 'left';
     snake.endGame();

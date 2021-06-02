@@ -17,9 +17,9 @@ let currDay = null;
 let events = localStorage.getItem('events') ?
   JSON.parse(localStorage.getItem('events')) : [];
 
-const addEvent = (date) => {
+const addEvent = date => {
   currDay = date;
-  const currentEvent = events.find((x) => x.date === currDay);
+  const currentEvent = events.find(x => x.date === currDay);
 
   if (currentEvent) {
     correctEvent.style.display = 'block';
@@ -61,7 +61,7 @@ const display = () => {
     if (i > paddingdays) {
       daySquare.innerText = i - paddingdays;
 
-      const currentEvent = events.find((x) =>
+      const currentEvent = events.find(x =>
         x.date === `${month + 1}/${i - paddingdays}/${year}`);
 
       if (currentEvent) {
@@ -143,7 +143,7 @@ const deleteWindow = () => {
 };
 
 const deleteEvent = () => {
-  events = events.filter((x) => x.date !== currDay);
+  events = events.filter(x => x.date !== currDay);
   deleteWindow();
 };
 
