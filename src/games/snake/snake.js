@@ -7,19 +7,19 @@ let direct = 'right';
 let initScore = 0;
 const initCoords = {
   x: 1,
-  y: 25
+  y: 25,
 };
 
-const snakeObjects = []; // snake body
+const snakeObjects = []; //snake body
 const snakeParametres = {
   initLength: 5,
   snakeX: 13,
-  snakeY: 13
+  snakeY: 13,
 };
 let apple;
 let applePos;
 
-// making cells
+//making cells
 for (let i = 0; i < blocksAmount; i++) {
   const cell = document.createElement('div');
   cell.classList.add('cell');
@@ -73,26 +73,22 @@ class Snake {
       snakeObjects.push(document.querySelector('[x = "' + (this.x - i) +
                 '"][y = "' + (this.y) + '"]'));
     }
-    console.log(snakeObjects);
     snakeObjects[0].classList.add('snakeHead');
     for (let el = 1; el < snakeObjects.length; el++) {
       snakeObjects[el].classList.add('snakeBody');
     }
   }
-
   removeClass() {
     snakeObjects[0].classList.remove('snakeHead');
     snakeObjects[snakeObjects.length - 1].classList.remove('snakeBody');
     snakeObjects.pop();
   }
-
   returnClass() {
     snakeObjects[0].classList.add('snakeHead');
     for (let el = 1; el < snakeObjects.length; el++) {
       snakeObjects[el].classList.add('snakeBody');
     }
   }
-
   eatApple() {
     if (snakeObjects[0].getAttribute('x') === apple.getAttribute('x') &&
             snakeObjects[0].getAttribute('y') === apple.getAttribute('y')) {
@@ -105,43 +101,39 @@ class Snake {
       initScore++;
       document.getElementById('score').innerText = initScore;
       createApple();
-      console.log(initScore);
     }
   }
-
   moveSnake() {
     const headCoords = [snakeObjects[0].getAttribute('x'),
       snakeObjects[0].getAttribute('y')
     ];
     this.removeClass();
     if (direct === 'right') {
-      if (headCoords[0] === 25) headCoords[0] = 0;
+      if (headCoords[0] === '25') headCoords[0] = '0';
       snakeObjects.unshift(document.querySelector('[x = "' +
                 (+headCoords[0] + 1) + '"][y = "' + (headCoords[1]) + '"]'));
     }
     if (direct === 'left') {
-      if (headCoords[0] === 1) headCoords[0] = 26;
+      if (headCoords[0] === '1') headCoords[0] = '26';
       snakeObjects.unshift(document.querySelector('[x = "' +
                 (+headCoords[0] - 1) + '"][y = "' + (headCoords[1]) + '"]'));
     }
     if (direct === 'down') {
-      if (headCoords[1] === 1) headCoords[1] = 26;
+      if (headCoords[1] === '1') headCoords[1] = '26';
       snakeObjects.unshift(document.querySelector('[x = "' +
                 (headCoords[0]) + '"][y = "' + (+headCoords[1] - 1) + '"]'));
     }
     if (direct === 'up') {
-      if (headCoords[1] === 25) headCoords[1] = 0;
+      if (headCoords[1] === '25') headCoords[1] = '0';
       snakeObjects.unshift(document.querySelector('[x = "' +
                 (headCoords[0]) + '"][y = "' + (+headCoords[1] + 1) + '"]'));
     }
     this.eatApple();
     this.returnClass();
   }
-
   endGame() {
     this.moveSnake();
     if (snakeObjects[0].classList.contains('snakeBody')) {
-      console.log('game over');
       document.getElementById('end').style.display = 'block';
       snakeObjects[0].classList.remove('snakeHead');
       for (let el = 1; el < snakeObjects.length; el++) {
