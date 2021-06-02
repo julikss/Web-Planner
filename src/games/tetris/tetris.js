@@ -1,4 +1,3 @@
-const game = new Game();
 let score = 0;
 let level = 0;
 let  playfield = [
@@ -23,44 +22,46 @@ let  playfield = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
-let Figures = [T, E, Z, W, L, J, I];
 class CreateFigure {
-    FigureOne = [
-                    [0, T, 0],
-                    [T, T, T],
-                    [0, 0, 0]
-                ]
-    FigureTwo = [
-                    [0, E, E],
-                    [0, E, E],
-                    [0, 0, 0]
-                ]
-  FigureThree = [
-                    [Z, Z, 0],
-                    [0, Z, Z],
-                    [0, 0, 0]
-                ]
-  FigureFoure = [
-                    [0, W, W],
-                    [W, W, 0],
-                    [0, 0, 0]
-                ]
-   FigureFive = [
-                    [L, 0, 0],
-                    [L, 0, 0],
-                    [L, L, 0]
-                ]
-    FigureSix = [
-                    [0, 0, J],
-                    [0, 0, J],
-                    [0, J, J]
-                ]
-  FigureEight = [
-                    [0, I, 0],
-                    [0, I, 0],
-                    [0, I, 0]
-                ]
-    };
+    Figures = [T, E, Z, W, L, J, I];
+    switch() {
+    FigureOne: [
+                   [0, T, 0],
+                   [T, T, T],
+                   [0, 0, 0]
+               ]
+    FigureTwo: [
+                   [0, E, E],
+                   [0, E, E],
+                   [0, 0, 0]
+               ]
+  FigureThree: [
+                   [Z, Z, 0],
+                   [0, Z, Z],
+                   [0, 0, 0]
+               ]
+  FigureFoure: [
+                   [0, W, W],
+                   [W, W, 0],
+                   [0, 0, 0]
+               ]
+   FigureFive: [
+                   [L, 0, 0],
+                   [L, 0, 0],
+                   [L, L, 0]
+               ]
+    FigureSix: [
+                   [0, 0, J],
+                   [0, 0, J],
+                   [0, J, J]
+               ]
+ FigureEight:  [
+                   [0, I, 0],
+                   [0, I, 0],
+                   [0, I, 0]
+               ]
+            }
+};
 const MaxCoundOfFigures = 7;
 function getRandomInt(MaxCoundOfFigures){
     return Math.floor(Math.random() * MaxCoundOfFigures);
@@ -301,10 +302,5 @@ DrawPlayfield = (playfield) => {
        } 
     }
 }
-
-const main = document.querySelector('#main');
-const view = new View(main, 320, 640, 20, 10);
-
-View.DrawPlayfieled(Game.playfield);
 
 
