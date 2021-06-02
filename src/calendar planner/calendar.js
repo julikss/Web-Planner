@@ -17,9 +17,9 @@ let currDay = null;
 let events = localStorage.getItem('events') ?
   JSON.parse(localStorage.getItem('events')) : [];
 
-const addEvent = date => {
+const addEvent = (date) => {
   currDay = date;
-  const currentEvent = events.find(x => x.date === currDay);
+  const currentEvent = events.find((x) => x.date === currDay);
 
   if (currentEvent) {
     correctEvent.style.display = 'block';
@@ -28,6 +28,39 @@ const addEvent = date => {
   } else {
     newEvent.style.display = 'block';
     modalBackDrop.style.display = 'block';
+  }
+};
+
+const checkEvent = (dayBlock, month, paddingdays, year, i) => {
+  const currentEvent = events.find((x) =>
+    x.date === `${month + 1}/${i - paddingdays}/${year}`);
+  if (currentEvent) {
+    console.log(currentEvent);
+    const eventName = document.createElement('div');
+    eventName.classList.add('event');
+    eventName.innerText = currentEvent.event;
+    dayBlock.appendChild(eventName);
+  }
+
+};
+
+const makeBlocks = (displayedDays, paddingdays, year, month, day) => {
+  for (let i = 1; i <= displayedDays; i++) {
+
+    const daySquare = document.createElement('div');
+    daySquare.classList.add('day');
+    if (i === day + paddingdays && currentMonth === 0) {
+      daySquare.classList.add('highlight');
+    }
+    if (i <= paddingdays) {
+      daySquare.classList.add('padding');
+    } else {
+      daySquare.innerText = i - paddingdays;
+      checkEvent(daySquare, month, paddingdays, year, i);
+      daySquare.addEventListener('click',
+        () => addEvent(`${month + 1}/${i - paddingdays}/${year}`));
+    }
+    calendar.appendChild(daySquare);
   }
 };
 
@@ -52,34 +85,7 @@ const display = () => {
 
   calendar.innerHTML = '';
 
-  for (let i = 1; i <= displayedDays; i++) {
-    const daySquare = document.createElement('div');
-    daySquare.classList.add('day');
-    if (i === day + paddingdays && currentMonth === 0) {
-      daySquare.classList.add('highlight');
-    }
-    if (i > paddingdays) {
-      daySquare.innerText = i - paddingdays;
-
-      const currentEvent = events.find(x =>
-        x.date === `${month + 1}/${i - paddingdays}/${year}`);
-
-      if (currentEvent) {
-        console.log(currentEvent);
-        const eventName = document.createElement('div');
-        eventName.classList.add('event');
-        eventName.innerText = currentEvent.event;
-        daySquare.appendChild(eventName);
-      }
-
-      daySquare.addEventListener('click',
-        () => addEvent(`${month + 1}/${i - paddingdays}/${year}`));
-    } else {
-      daySquare.classList.add('padding');
-    }
-
-    calendar.appendChild(daySquare);
-  }
+  makeBlocks(displayedDays, paddingdays, year, month, day);
 };
 
 const pressButton = () => {
@@ -143,7 +149,7 @@ const deleteWindow = () => {
 };
 
 const deleteEvent = () => {
-  events = events.filter(x => x.date !== currDay);
+  events = events.filter((x) => x.date !== currDay);
   deleteWindow();
 };
 
