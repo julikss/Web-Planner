@@ -40,9 +40,9 @@ Use the arrow keys on your keyboard to play.
 Created by Marina Vasylieva
 
 ### Tetris
-description
+It is a famous game. In this game, players complete lines by moving differently shaped pieces that appear on the playing field. 
 #### How to play 
-description
+In this game, you have a field where different figures will appear.  There are seven figures which have various forms. Figures will appear randomly. Your task is to collect all these figures on the bottom of the field. The game ends when the playing field is filled.
 
 Created by Anastasia Fartushnyak
 
