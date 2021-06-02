@@ -32,9 +32,9 @@ description
 Created by Sanina Anastasia
 
 ### Evil Forest
-The dark forest is full of secrets. Night is not the best time to walk in the forest, and even more so in Evil Forest. Run and jump over obstacles.You need to survive one night.
+The dark forest is full of secrets. Night is not the best time to walk in the forest, and even more in Evil Forest. Run and jump over the obstacles.You need to survive one night.
 #### How to play 
-Using the arrow keys on your keyboard to play.
+Use the arrow keys on your keyboard to play.
 
 
 Created by Marina Vasylieva
