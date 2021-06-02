@@ -14,32 +14,30 @@ const correctEvent = document.getElementById('correctEvent');
 
 let currentMonth = 0;
 let currDay = null;
-let events = localStorage.getItem('events') ?
-  JSON.parse(localStorage.getItem('events')) : [];
-
-const addEvent = (date) => {
-  currDay = date;
-  const currentEvent = events.find((x) => x.date === currDay);
-
-  if (currentEvent) {
-    correctEvent.style.display = 'block';
-    modalBackDrop.style.display = 'block';
-    document.getElementById('eventText').innerText = currentEvent.event;
-  } else {
-    newEvent.style.display = 'block';
-    modalBackDrop.style.display = 'block';
-  }
-};
+let events = new Map([]);
 
 const checkEvent = (dayBlock, month, paddingdays, year, i) => {
-  const currentEvent = events.find((x) =>
-    x.date === `${month + 1}/${i - paddingdays}/${year}`);
+  const currentEvent = events.get(`${month + 1}/${i - paddingdays}/${year}`);
   if (currentEvent) {
     console.log(currentEvent);
     const eventName = document.createElement('div');
     eventName.classList.add('event');
-    eventName.innerText = currentEvent.event;
+    eventName.innerText = currentEvent;
     dayBlock.appendChild(eventName);
+  }
+};
+
+const addEvent = (date) => {
+  currDay = date;
+  const currentEvent = events.get(currDay);
+
+  if (currentEvent) {
+    correctEvent.style.display = 'block';
+    modalBackDrop.style.display = 'block';
+    document.getElementById('eventText').innerText = currentEvent;
+  } else {
+    newEvent.style.display = 'block';
+    modalBackDrop.style.display = 'block';
   }
 
 };
@@ -67,7 +65,7 @@ const makeBlocks = (displayedDays, paddingdays, year, month, day) => {
 const display = () => {
   const currDate = new Date();
   if (currentMonth !== 0) {
-    currDate.setMonth(new Date().getMonth() + currentMonth);
+    currDate.setMonth(currDate.getMonth() + currentMonth);
   }
 
   const day = currDate.getDate();
@@ -84,8 +82,8 @@ const display = () => {
     .innerText = `${months[month]} ${year}`;
 
   calendar.innerHTML = '';
-
   makeBlocks(displayedDays, paddingdays, year, month, day);
+
 };
 
 const pressButton = () => {
@@ -120,11 +118,10 @@ const cancel = () => {
 const saveEvents = () => {
   if (eventInput.value) {
     eventInput.classList.remove('error');
-    events.push({
-      date: currDay,
-      event: eventInput.value
-    });
-    localStorage.setItem('events', JSON.stringify(events));
+    events.set(
+      currDay,
+      eventInput.value
+    );
     closeWindow();
     console.log(events);
   } else {
@@ -149,7 +146,7 @@ const deleteWindow = () => {
 };
 
 const deleteEvent = () => {
-  events = events.filter((x) => x.date !== currDay);
+  events = events.set(currDay);
   deleteWindow();
 };
 

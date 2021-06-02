@@ -27,14 +27,14 @@ animate();
 const cat = document.getElementById('cat');
 const apple = document.getElementById('apple');
 
-function jump(){
-  if(cat.classList != 'jump'){
-  cat.classList.add('jump');
+function jump() {
+  if (cat.classList != 'jump') {
+    cat.classList.add('jump');
 
-   setTimeout(() => {
-     cat.classList.remove('jump');
-   }, 300);
- }
+    setTimeout(() => {
+      cat.classList.remove('jump');
+    }, 300);
+  }
 }
 
 document.addEventListener('keydown', (event) => {
