@@ -29,7 +29,7 @@ The player controls a long, thin creature, resembling a snake, which roams aroun
 #### How to play 
 In order to move your snake in different directions just press arrow keys. Every time your snake eats apples, you will get points for them. 
 
-Created by Sanina Anastasia
+Created by Sanina Anastasiia
 
 ### Evil Forest
 The dark forest is full of secrets. Night is not the best time to walk in the forest, and even more in Evil Forest. Run and jump over the obstacles.You need to survive one night.
