@@ -2,10 +2,7 @@
 
 const canvas = document.getElementById('canvas');
 const blocksAmount = 625;
-
-let direct = 'right';
-let initScore = 0;
-const initCoords = {
+const coords = {
   x: 1,
   y: 25,
 };
@@ -16,6 +13,9 @@ const snakeParametres = {
   snakeX: 13,
   snakeY: 13,
 };
+
+let direct = 'right';
+let initScore = 0;
 let apple;
 let applePos;
 
@@ -29,13 +29,13 @@ for (let i = 0; i < blocksAmount; i++) {
 const block = document.getElementsByClassName('cell');
 const makingCells = () => {
   for (let j = 0; j < blocksAmount; j++) {
-    if (initCoords.x === 26) {
-      initCoords.x = 1;
-      initCoords.y--;
+    if (coords.x === 26) {
+      coords.x = 1;
+      coords.y--;
     }
-    block[j].setAttribute('x', initCoords.x);
-    block[j].setAttribute('y', initCoords.y);
-    initCoords.x++;
+    block[j].setAttribute('x', coords.x);
+    block[j].setAttribute('y', coords.y);
+    coords.x++;
   }
 };
 
@@ -146,8 +146,9 @@ class Snake {
           document.getElementById('end').style.display = 'none';
           initScore = 0;
           document.getElementById('score').innerText = initScore;
+          this.initializeSnake();
         });
-      this.initializeSnake();
+
     }
   }
 }

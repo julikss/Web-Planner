@@ -44,8 +44,8 @@ const addEvent = (date) => {
 
 const makeBlocks = (displayedDays, paddingdays, year, month, day) => {
   for (let i = 1; i <= displayedDays; i++) {
-
     const daySquare = document.createElement('div');
+
     daySquare.classList.add('day');
     if (i === day + paddingdays && currentMonth === 0) {
       daySquare.classList.add('highlight');
