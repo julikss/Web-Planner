@@ -26,9 +26,13 @@ animate();
 
 const cat = document.getElementById('cat');
 const apple = document.getElementById('apple');
-
+const score = document.getElementById('score');
+const repeat = document.querySelector('#gameOver');
+audplay = new Audio('sumsound.mp3');
+audplay = new Audio('gameover.mp3');
 function jump() {
-  if (cat.classList != 'jump') {
+  repeat.style.visibility = 'hidden';
+  if (cat.classList !== 'jump') {
     cat.classList.add('jump');
 
     setTimeout(() => {
@@ -37,6 +41,33 @@ function jump() {
   }
 }
 
+setInterval(() => {
+  const catTop = parseInt(window.getComputedStyle(cat)
+    .getPropertyValue('top'));
+  const appleLeft = parseInt(window.getComputedStyle(apple)
+    .getPropertyValue('left'));
+
+  if (appleLeft < 350) apple.style.display = 'none';
+  else apple.style.display = '';
+
+  const catPos = 400;
+  const applePos = 350;
+  const catJ = 500;
+
+  if (appleLeft < catPos && appleLeft > applePos && catTop > catJ) {
+    repeat.style.visibility = 'visible';
+
+    audplay.play();
+    seTimeout(() => {
+      audplay.pause();
+      audplay.pause();
+    }, 1000);
+  }
+}, 50);
+
 document.addEventListener('keydown', (event) => {
   jump();
+});
+repeat.addEventListener('click', () => {
+  location.reload();
 });

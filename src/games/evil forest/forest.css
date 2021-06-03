@@ -21,21 +21,11 @@
   animation: jump 0.3s linear;
 }
 @keyframes jump {
-  0%{
-    top: 580px;
-  }
-  30%{
-    top: 450px;
-  }
-  50%{
-    top:300px;
-  }
-  80%{
-    top:450px;
-  }
-  100%{
-    top:580px;
-  }
+  0%{top:580px;}
+  30%{top:450px;}
+  50%{top:300px;}
+  80%{top:450px;}
+  100%{top:580px;}
 }
 #apple{
   width: 100px;
@@ -47,11 +37,21 @@
   z-index: 3;
   animation: block 1s infinite linear;
 }
-@keyframes block {
-  0%{
-    left: 1110px;
-  }
-  100%{
-    left: 360px;
-  }
+@keyframes block{
+  0%{left: 1110px;}
+  100%{left: 360px;}
 }
+#gameOver{
+    margin: 10px;
+    color: white;
+    z-index: 4;
+}
+button{
+    background: none;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    cursor: pointer;
+}
+button:hover{
+    color:#fbee6c;
+  }
