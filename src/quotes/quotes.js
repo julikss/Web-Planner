@@ -1,17 +1,24 @@
-import {day1, day2, day3, day4, day5, day6, day7} from 'datQuo.js'
+'use strict';
 
 const hideText = document.getElementById('overlay');
 const getText = document.getElementById('help');
 const getQuotes = document.getElementById('getQuo');
 
-const days = [day1, day2, day3, day4, day5, day6, day7];
-
-function week() {
-  const n = new Date().getDay();
-  const currDay = days[n - 1];
-  const random = currDay[Math.floor(Math.random() * currDay.length)];
-  return random;
+function randomItem(quotes) {
+  return quotes[Math.floor(Math.random() * quotes.length)];
 }
+const quotes = ['Главное в жизни - это уметь думать. Попытайтесь пожалуйста',
+  'Прекрати бежать напрасно, друг мой, ты не обязан мечтать обо всём',
+  'Люди всегда видят лишь то, что хотят видеть',
+  'Не попади в ловушку чужой мечты',
+  'Чем дальше от понедельника, тем добрее утро.',
+  'Во всём виноваты воскресенья, не будь воскресений, не было бы и понедельников!',
+  'Я говорил, что мы выиграем. Хотя я не верил в это',
+  'Если головоломка не сложилась и тебе не подобрать пазлы, то начинай сначала',
+  'It’s Sunday, therefore I am 100% motivated to do nothing today!',
+  'Sunday clears away the rust of the whole week.',
+  'Sunday checklist: do nothing & chill.'
+];
 
 function getGreeting() {
   let greeting;
@@ -21,12 +28,11 @@ function getGreeting() {
   else if (time < 18) greeting = 'Good day';
   else greeting = 'Good evening';
 
-  document.getElementById('gr').innerHTML = greeting + ' ' + week();
+  document.getElementById('gr').innerHTML = greeting + ' ' + randomItem(quotes);
 }
 
 function lockoutSubmit(button) {
   const oldValue = button.value;
-
   button.setAttribute('disabled', true);
 
   setTimeout(() => {
@@ -36,9 +42,8 @@ function lockoutSubmit(button) {
 }
 
 getQuotes.addEventListener('click', () => {
-  week();
   getGreeting();
-  lockoutSubmit(button);
+  lockoutSubmit();
 });
 
 getText.addEventListener('click', () => {

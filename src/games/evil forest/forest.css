@@ -2,7 +2,6 @@
   position:relative;
   width: 800px;
   height: 700px;
-  transform: translate(-50%; -50%);
   left: 25%;
   z-index: 1;
 }

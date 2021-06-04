@@ -1,16 +1,14 @@
 const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
-const repeat = document.querySelector('#gameOver');
-
 canvas.width = 800;
 canvas.height = 700;
 const gameSpeed = 5;
 const dist = 10;
 let score = 0;
-let frame = 0;
 
 const backgroundLayer1 = new Image();
 backgroundLayer1.src = 'fullback.png';
+audback = new Audio('sumsound.mp3');
 audover = new Audio('gameover.mp3');
 
 let x = 0;
@@ -65,6 +63,10 @@ class Apple {
   }
   roll() {
     this.x -= 6;
+    if (this.x === -this.width) this.x = canvas.width;
+  }
+  collide() {
+    ctx.clearRect(this.x, this.y, this.width, this.height);
   }
 }
 
@@ -76,23 +78,12 @@ function gameOver() {
   const appleX = apple.x + apple.width;
   const appleY = apple.x + apple.width;
   if (catX === appleX && catY === appleY) {
-    gameOver.innerHTML = 'Game Over - Reload to Play Again' + score.innerText;
-    repeat.style.visibility = 'visible';
-    audover.play();
+    apple.collide();
+    cancelAnimationFrame(animate);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    audback.play();
   } else {
     score++;
-  }
-}
-const appleArr = [];
-function jumpScore() {
-  if (frame % 100 === 0) {
-    appleArr.push(new Apple());
-  }
-  for (let i = 0; i < appleArr.length; i++) {
-    if (appleArr[i].y < 0) {
-      score++;
-      appleArr.splice(i, 1);
-    }
   }
 }
 
@@ -116,7 +107,6 @@ function animate() {
   apple.draw();
   apple.roll();
   gameOver();
-  jumpScore();
   writeInCtx();
   requestAnimationFrame(animate);
 }
