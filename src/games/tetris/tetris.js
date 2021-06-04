@@ -252,9 +252,9 @@ isConditionsForFigures = () => {
                 if (this.playfield[FigureY + y] === undefined || this.playfield[FigureY + y][figureX + x] === undefined || this.playfield[FigureY + y][figureX + x]) {
                     return true;
                 }
-                return true;
+                    return true;
             }
-                return false;
+                    return false;
     }
 }
 lockFigure = () => {
@@ -280,6 +280,11 @@ document.addEventListener('keydown', move);
         }
     }
 move();
+
+const canvas = document.getElementById('canvas');
+canvas.width = this.width;
+canvas.height = this.height;
+this.context = this.canvas.getContext('2d');
 class View {
 constructor(elements, width, height, rows, columns) {
 this.elements = elements;
@@ -303,9 +308,7 @@ DrawPlayfield = (playfield) => {
                    this.context.fillStyle = '#fbee6c';
                    this.context.strokeStyle = '#c7c7c7';
                    this.context.lineWidth = 2;
-
                    this.context.fillRect(x * this.blockwidth, y * this.blockheight, this.blockwidth, this.blockheight);
-
                }
            }
        } 
