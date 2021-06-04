@@ -33,13 +33,11 @@ const addEvent = (date) => {
 
   if (currentEvent) {
     correctEvent.style.display = 'block';
-    modalBackDrop.style.display = 'block';
     document.getElementById('eventText').innerText = currentEvent;
   } else {
     newEvent.style.display = 'block';
-    modalBackDrop.style.display = 'block';
   }
-
+  modalBackDrop.style.display = 'block';
 };
 
 const makeBlocks = (displayedDays, paddingdays, year, month, day) => {
@@ -108,13 +106,6 @@ const closeWindow = () => {
   display();
 };
 
-const cancel = () => {
-  document.getElementById('cancelButton')
-    .addEventListener('click', () => {
-      closeWindow();
-    });
-};
-
 const saveEvents = () => {
   if (eventInput.value) {
     eventInput.classList.remove('error');
@@ -129,7 +120,12 @@ const saveEvents = () => {
   }
 };
 
-const add = () => {
+const manageEvents = () => {
+  document.getElementById('cancelButton')
+    .addEventListener('click', () => {
+      closeWindow();
+    });
+
   document.getElementById('addButton')
     .addEventListener('click', () => {
       saveEvents();
@@ -164,8 +160,7 @@ const finalButtons = () => {
 
 const manageButtons = () => {
   pressButton();
-  cancel();
-  add();
+  manageEvents();
   finalButtons();
 };
 
