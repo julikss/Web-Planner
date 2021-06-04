@@ -1,3 +1,4 @@
+'use strict';
 // canvas
 const canvas = document.querySelector('#canvas1');
 const ctx = canvas.getContext('2d');
@@ -5,6 +6,7 @@ const repeat = document.querySelector('#gameOver');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+// characteristics
 let score = 0;
 let skip = 0;
 let gameFrame = 0;
@@ -14,13 +16,15 @@ allTotal = JSON.parse(allTotal);
 document.getElementById('allTotal').value = allTotal;
 ctx.font = '30px arial';
 
-// sound
+// sound for the game
+//burst bubbles
 const bulMusic = document.createElement('audio');
 bulMusic.src = './sound/soundBul.mp3';
+//game over
 const gameOverMusic = document.createElement('audio');
 gameOverMusic.src = './sound/gameover.mp3';
 
-// mouse
+// coordinates and mouse control
 const canvasPosition = canvas.getBoundingClientRect();
 const mouse = {
   x: canvas.width / 2,
@@ -31,7 +35,7 @@ canvas.addEventListener('mousemove', (event) => {
   mouse.y = event.y - canvasPosition.top;
 });
 
-// player
+// create the main character
 const imgPlayer = new Image();
 imgPlayer.src = './img/player.png';
 class Player {
@@ -71,7 +75,8 @@ class Player {
 }
 const player = new Player();
 
-// small bulbul
+/* create bubbles for which
+the protagonist will receive points*/
 const bulArray = [];
 const imgBul = new Image();
 imgBul.src = './img/bul.png';
@@ -104,6 +109,8 @@ class Bul {
   }
 }
 
+/* the frequency of bubbles on the screen
+and the condition of disappearance*/
 function handlyBul() {
   if (gameFrame % 50 === 0) {
     bulArray.push(new Bul());
@@ -126,7 +133,7 @@ function handlyBul() {
   }
 }
 
-// danger fish
+// creating a dangerous fish that eats the protagonist
 const dangerFishImage = new Image();
 dangerFishImage.src = './img/dangerFish.png';
 class DangerFish {

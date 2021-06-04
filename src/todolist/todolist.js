@@ -1,3 +1,4 @@
+'use strict';
 const addButton = document.getElementById('add');
 const inputTask = document.getElementById('new-task');
 const unfinishedTasks = document.getElementById('unfinished-tasks');
