@@ -22,46 +22,50 @@ let  playfield = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
-class CreateFigure {
-    Figures = [T, E, Z, W, L, J, I];
-    switch() {
-    FigureOne: [
-                   [0, T, 0],
-                   [T, T, T],
+const figures = {
+    figureOne: [
+                   [0, 1, 0],
+                   [1, 1, 1],
                    [0, 0, 0]
-               ]
-    FigureTwo: [
-                   [0, E, E],
-                   [0, E, E],
+               ],
+    figureTwo: [
+                   [0, 1, 1],
+                   [0, 1, 1],
                    [0, 0, 0]
-               ]
-  FigureThree: [
-                   [Z, Z, 0],
-                   [0, Z, Z],
+               ],
+  figureThree: [
+                   [1, 1, 0],
+                   [0, 1, 1],
                    [0, 0, 0]
-               ]
-  FigureFoure: [
-                   [0, W, W],
-                   [W, W, 0],
+               ],
+  figureFoure: [
+                   [0, 1, 1],
+                   [1, 1, 0],
                    [0, 0, 0]
-               ]
-   FigureFive: [
-                   [L, 0, 0],
-                   [L, 0, 0],
-                   [L, L, 0]
-               ]
-    FigureSix: [
-                   [0, 0, J],
-                   [0, 0, J],
-                   [0, J, J]
-               ]
- FigureEight:  [
-                   [0, I, 0],
-                   [0, I, 0],
-                   [0, I, 0]
-               ]
+               ],
+   figureFive: [
+                   [1, 0, 0],
+                   [1, 0, 0],
+                   [1, 1, 0]
+               ],
+    figureSix: [
+                   [0, 0, 1],
+                   [0, 0, 1],
+                   [0, 1, 1]
+               ],
+ figureSeven:  [
+                   [0, 1, 0],
+                   [0, 1, 0],
+                   [0, 1, 0]
+               ],
             }
-};
+const allBlocks = 200;
+const main = document.getElementsById('main');
+for (let i = 0; i < allBlocks; i++) {
+    const cell = document.createElement('div');
+    cell.classList.add('cell');
+    main.appendChild(cell);
+}
 const MaxCoundOfFigures = 7;
 function getRandomInt(MaxCoundOfFigures){
     return Math.floor(Math.random() * MaxCoundOfFigures);
@@ -218,7 +222,6 @@ moveFigureLeft = () => {
         this.lockFigure();
     }
 }
-
 moveFigureRight = () => {
     this.activeFigure.x += 1;
     if (this.isConditionsForFigures()) {
@@ -266,11 +269,17 @@ lockFigure = () => {
         }
     }
 }
-
-const canvas = document.getElementById('canvas');
-this.canvas.width = this.width;
-this.canvas.height = this.height;
-this.context = this.canvas.getContext('2d');
+document.addEventListener('keydown', move);
+    function move(event) {
+        if (event.keyCode === 37) {
+            dir = 'left';
+        } else if (event.keyCode === 39) {
+            dir = 'right';
+        }  else if (event.keyCode === 40) {
+            dir = 'down';
+        }
+    }
+move();
 class View {
 constructor(elements, width, height, rows, columns) {
 this.elements = elements;

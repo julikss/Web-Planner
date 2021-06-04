@@ -4,10 +4,14 @@
     background-color: #29333f;
 }
 #main {
-    height: 640px;
-    width: 320px;
+    height: 500px;
+    width: 1000px;
     border: solid #c7c7c7;
-    position: absolute;
-    margin-left: 600px;
-    margin-top: 50px;
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+.cell {
+    width: 50px;
+    height: 50px;
 }
