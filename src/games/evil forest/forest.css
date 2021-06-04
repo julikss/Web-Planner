@@ -6,41 +6,6 @@
   left: 25%;
   z-index: 1;
 }
-#cat{
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  background-image: url(cat.png);
-  background-size: 100px 100px;
-  top:580px;
-  left:400px;
-  z-index: 2;
-
-}
-.jump{
-  animation: jump 0.3s linear;
-}
-@keyframes jump {
-  0%{top:580px;}
-  30%{top:450px;}
-  50%{top:300px;}
-  80%{top:450px;}
-  100%{top:580px;}
-}
-#apple{
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  background-image: url(apple.png);
-  top:600px;
-  left:1110px;
-  z-index: 3;
-  animation: block 1s infinite linear;
-}
-@keyframes block{
-  0%{left: 1110px;}
-  100%{left: 360px;}
-}
 #gameOver{
   position: absolute;
  height: 70px;
@@ -49,7 +14,7 @@
  color: white;
  text-align: center;
  cursor: pointer;
- z-index: 5;
+ z-index: 2;
  top:300px;
  left:700px;
  visibility: hidden;
