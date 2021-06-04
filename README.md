@@ -1,7 +1,7 @@
 ## Our Web Planner is created to ease your life by planning. 
-- In To-Do List you can write your daily goals and cross them out if they're completed
-- You can write your plans for the month in the Calendar
-- Get your daily inspiration by reading motivational quotes
+- In To-Do List you can write your daily goals and cross them out if they're completed.   Created by Kvasova Liubov
+- You can write your plans for the month in the Calendar.   Created by Sanina Anastasiia
+- Get your daily inspiration by reading motivational quotes.   Created by Marina Vasylieva
 - Play our games to relax from planning
 
 ### Previews of our website
