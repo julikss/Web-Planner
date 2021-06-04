@@ -42,16 +42,25 @@
   100%{left: 360px;}
 }
 #gameOver{
-    margin: 10px;
-    color: white;
-    z-index: 4;
+  position: absolute;
+ height: 70px;
+ width: 200px;
+ background: rgb(0, 0, 0, 0.8);
+ color: white;
+ text-align: center;
+ cursor: pointer;
+ z-index: 5;
+ top:300px;
+ left:700px;
+ visibility: hidden;
 }
 button{
-    background: none;
-    color: rgb(255, 255, 255);
-    font-size: 30px;
-    cursor: pointer;
+  background: none;
+  color: rgb(255, 255, 255);
+  font-size: 30px;
+  cursor: pointer;
 }
 button:hover{
-    color:#fbee6c;
+  color:#fbee6c;
   }
+.

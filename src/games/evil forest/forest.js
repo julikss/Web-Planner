@@ -19,17 +19,20 @@ function animate() {
   else x -= gameSpeed;
   if (x2 < -2400) x2 = 2400 + x - gameSpeed;
   else x2 -= gameSpeed;
-
   requestAnimationFrame(animate);
 }
 animate();
+
 
 const cat = document.getElementById('cat');
 const apple = document.getElementById('apple');
 const score = document.getElementById('score');
 const repeat = document.querySelector('#gameOver');
-audplay = new Audio('sumsound.mp3');
-audplay = new Audio('gameover.mp3');
+audback = new Audio('sumsound.mp3');
+audover = new Audio('gameover.mp3');
+setTimeout(() => {
+  audback.play();
+}, 1000);
 function jump() {
   repeat.style.visibility = 'hidden';
   if (cat.classList !== 'jump') {
@@ -47,6 +50,7 @@ setInterval(() => {
   const appleLeft = parseInt(window.getComputedStyle(apple)
     .getPropertyValue('left'));
 
+
   if (appleLeft < 350) apple.style.display = 'none';
   else apple.style.display = '';
 
@@ -55,17 +59,21 @@ setInterval(() => {
   const catJ = 500;
 
   if (appleLeft < catPos && appleLeft > applePos && catTop > catJ) {
+    apple.classList.remove('apple');
+    gameOver.innerHTML = 'Game Over - Reload to Play Again';
     repeat.style.visibility = 'visible';
+    const running = apple.style.animationPlayState || 'running';//yes
+    apple.style.animationPlayState = running === 'running' ? 'paused' : 'running';
 
-    audplay.play();
-    seTimeout(() => {
-      audplay.pause();
-      audplay.pause();
+    audover.play();
+    setTimeout(() => {
+      audover.pause();
+      audback.pause();
     }, 1000);
   }
 }, 50);
 
-document.addEventListener('keydown', (event) => {
+document.addEventListener('keydown', (e) => {
   jump();
 });
 repeat.addEventListener('click', () => {
