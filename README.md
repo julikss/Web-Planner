@@ -16,21 +16,21 @@ Living conditions in the polluted water are becoming unbearable for harmless fis
 To move a player in particular direction press arrow keys Right, Left, Up and Down. When you have left only one life, a bonus fish will appear - by eating it you can gain additional life. If you hit the shark before becoming bigger than it - you lose the game.
 
 Created by Julia Lehenka
-
+***
 ### BulBul Game
-Bul-bul. An interesting anti-stress game. Control the fish that will burst the balls. But beware! There are dangerous fish in the sea that can eat you.
+Bul-bul. An interesting anti-stress game. Immerse yourself in the sea world. Become a part of it. Control the fish that will burst the balls. But beware! There are dangerous fish in the sea that can eat you.
 #### How to play 
 To move the fish just move the mouse. Every time your fish do 'bul', you will get points for them.  And there will be a 'bull-bull' :3
 
 Created by Kvasova Liubov
-
+***
 ### Snake
 The player controls a long, thin creature, resembling a snake, which roams around on a bordered plane, picking up food (or some other item), trying to avoid hitting its own tail.
 #### How to play 
 In order to move your snake in different directions just press arrow keys. Every time your snake eats apples, you will get points for them. 
 
 Created by Sanina Anastasiia
-
+***
 ### Evil Forest
 The dark forest is full of secrets. Night is not the best time to walk in the forest, and even more in Evil Forest. Run and jump over the obstacles.You need to survive one night.
 #### How to play 
@@ -38,7 +38,7 @@ Use the arrow keys on your keyboard to play.
 
 
 Created by Marina Vasylieva
-
+***
 ### Tetris
 It is a famous game. In this game, players complete lines by moving differently shaped pieces that appear on the playing field. 
 #### How to play 
