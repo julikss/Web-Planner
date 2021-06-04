@@ -63,4 +63,6 @@ button{
 button:hover{
   color:#fbee6c;
   }
-.
+#score{
+  top:50px;
+}

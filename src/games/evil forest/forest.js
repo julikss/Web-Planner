@@ -45,6 +45,7 @@ function jump() {
 }
 
 setInterval(() => {
+  score.innerText++;
   const catTop = parseInt(window.getComputedStyle(cat)
     .getPropertyValue('top'));
   const appleLeft = parseInt(window.getComputedStyle(apple)
@@ -60,9 +61,9 @@ setInterval(() => {
 
   if (appleLeft < catPos && appleLeft > applePos && catTop > catJ) {
     apple.classList.remove('apple');
-    gameOver.innerHTML = 'Game Over - Reload to Play Again';
+    gameOver.innerHTML = 'Game Over - Reload to Play Again' + score.innerText;
     repeat.style.visibility = 'visible';
-    const running = apple.style.animationPlayState || 'running';//yes
+    const running = apple.style.animationPlayState || 'running';
     apple.style.animationPlayState = running === 'running' ? 'paused' : 'running';
 
     audover.play();
