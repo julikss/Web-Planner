@@ -1,8 +1,8 @@
 'use strict';
 const addButton = document.getElementById('add');
 const inputTask = document.getElementById('new-task');
-const unfinishedTasks = document.getElementById('unfinished-tasks');
-const finishedTasks = document.getElementById('finished-tasks');
+const doTasks = document.getElementById('unfinished-tasks');
+const doneTasks = document.getElementById('finished-tasks');
 
 // change background
 const backgrs = document.querySelectorAll('.background');
@@ -47,7 +47,7 @@ function createNewElement(task, finished) {
 function addTask() {
   if (inputTask.value) {
     const listItem = createNewElement(inputTask.value, false);
-    unfinishedTasks.appendChild(listItem);
+    doTasks.appendChild(listItem);
     bindTaskEvents(listItem, finishTask);
     inputTask.value = '';
   }
@@ -87,7 +87,7 @@ function finishTask() {
   const checkbox = listItem.querySelector('button.checkbox');
   checkbox.className = 'checkbox';
   checkbox.innerHTML = '<i class=\'icons\'>cancel</i>';
-  finishedTasks.appendChild(listItem);
+  doneTasks.appendChild(listItem);
   bindTaskEvents(listItem, unfinishTask);
   save();
 }
@@ -98,7 +98,7 @@ function unfinishTask() {
   checkbox.className = 'checkbox';
   checkbox.innerHTML = '<i class=\'icons\'>✔done</i>';
 
-  unfinishedTasks.appendChild(listItem);
+  doTasks.appendChild(listItem);
   bindTaskEvents(listItem, finishTask);
   save();
 }
@@ -114,18 +114,18 @@ function bindTaskEvents(listItem, checkboxEvent) {
 }
 
 function save() {
-  const unfinishedTasksArr = [];
-  for (let i = 0; i < unfinishedTasks.children.length; i++) {
-    unfinishedTasksArr.push(unfinishedTasks.children[i].getElementsByTagName('label')[0].innerText);
+  const doTasksArr = [];
+  for (let i = 0; i < doTasks.children.length; i++) {
+    doTasksArr.push(doTasks.children[i].getElementsByTagName('label')[0].innerText);
   }
-  const finishedTasksArr = [];
-  for (let i = 0; i < finishedTasks.children.length; i++) {
-    finishedTasksArr.push(finishedTasks.children[i].getElementsByTagName('label')[0].innerText);
+  const doneTasksArr = [];
+  for (let i = 0; i < doneTasks.children.length; i++) {
+    doneTasksArr.push(doneTasks.children[i].getElementsByTagName('label')[0].innerText);
   }
   localStorage.removeItem('todo');
   localStorage.setItem('todo', JSON.stringify({
-    unfinishedTasks: unfinishedTasksArr,
-    finishedTasks: finishedTasksArr
+    doTasks: doTasksArr,
+    doneTasks: doneTasksArr
   }));
 }
 
@@ -135,14 +135,14 @@ function load() {
 
 const data = load();
 
-for (let i = 0; i < data.unfinishedTasks.length; i++) {
-  const listItem = createNewElement(data.unfinishedTasks[i], false);
-  unfinishedTasks.appendChild(listItem);
+for (let i = 0; i < data.doTasks.length; i++) {
+  const listItem = createNewElement(data.doTasks[i], false);
+  doTasks.appendChild(listItem);
   bindTaskEvents(listItem, finishTask);
 }
 
-for (let i = 0; i < data.finishedTasks.length; i++) {
-  const listItem = createNewElement(data.finishedTasks[i], true);
-  finishedTasks.appendChild(listItem);
+for (let i = 0; i < data.doneTasks.length; i++) {
+  const listItem = createNewElement(data.doneTasks[i], true);
+  doneTasks.appendChild(listItem);
   bindTaskEvents(listItem, unfinishTask);
 }
