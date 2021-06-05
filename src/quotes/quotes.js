@@ -24,8 +24,11 @@ function getGreeting() {
   let greeting;
   const time = new Date().getHours();
 
-  if (time < 10) greeting = 'Good morning';
-  else if (time < 18) greeting = 'Good day';
+  const aftHourQuo = 10;
+  const evHourQuo = 18;
+
+  if (time < aftHourQuo) greeting = 'Good morning';
+  else if (time < evHourQuo) greeting = 'Good day';
   else greeting = 'Good evening';
 
   document.getElementById('gr').innerHTML = greeting + ' ' + randomItem(quotes);
@@ -57,8 +60,11 @@ hideText.addEventListener('click', () => {
 function setImage() {
   const timeIm = new Date().getHours();
 
-  if (timeIm < 14) document.body.style.backgroundImage = 'url(\'./img/back1.png\')';
-  else if (timeIm < 19) document.body.style.backgroundImage = 'url(\'./img/back2.png\')';
+  const aftHourImg = 14;
+  const evHourImg = 19;
+
+  if (timeIm < aftHourImg) document.body.style.backgroundImage = 'url(\'./img/back1.png\')';
+  else if (timeIm < evHourImg) document.body.style.backgroundImage = 'url(\'./img/back2.png\')';
   else document.body.style.backgroundImage = 'url(\'./img/back3.png\')';
 }
 setImage();
