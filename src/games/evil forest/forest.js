@@ -79,8 +79,10 @@ function gameOver() {
   const appleY = apple.x + apple.width;
   if (catX === appleX && catY === appleY) {
     apple.collide();
+    repeat.style.visibility = 'visible';
     cancelAnimationFrame(animate);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     audback.play();
   } else {
     score++;
@@ -102,12 +104,15 @@ function animate() {
   if (x2 < -2400) x2 = 2400 + x - gameSpeed;
   else x2 -= gameSpeed;
 
+  repeat.style.visibility = 'hidden';
+
   cat.draw();
   cat.jump();
   apple.draw();
   apple.roll();
   gameOver();
   writeInCtx();
+  audback.play();
   requestAnimationFrame(animate);
 }
 animate();
